@@ -26,7 +26,7 @@ export const carouselItems: carouselItemsType[] = [
     availableSizes: ["7", "8", "9", "10", "11", "12"],
     brand: "Nike",
 
-    image: "/hero-images/nike.png",
+    image: "/hero-images/Nike.png",
     id: 1,
     className: "text-header top-[35%] md:top-[18%] lg:top-[5%]",
   },
@@ -45,7 +45,7 @@ export const carouselItems: carouselItemsType[] = [
     availableSizes: ["7", "8", "9", "10", "11", "12"],
     brand: "Vans",
 
-    image: "/hero-images/vans.png",
+    image: "/hero-images/Vans.png",
     id: 3,
     className: "text-header top-[35%] md:top-[18%] lg:top-[5%]",
   },
