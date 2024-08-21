@@ -13,7 +13,7 @@ const poppins_init = Poppins({
 const leage_gothic_init = League_Gothic({
   subsets: ["latin"],
 
-  variable: "--font-poppins",
+  variable: "--font-leage-gothic",
 });
 export const metadata: Metadata = {
   title: "Create Next App",
