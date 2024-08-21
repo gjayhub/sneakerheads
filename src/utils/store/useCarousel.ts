@@ -64,44 +64,31 @@ export const carouselItems: carouselItemsType[] = [
 ];
 
 export const useCarousel = create<Store>()((set) => ({
-  current: carouselItems[CAROUSEL_INDEX],
+  current: carouselItems[0],
   animationDirection: "right",
   active: 1,
-  setCurrent: (idx: number) =>
-    set({ current: carouselItems[idx], active: idx + 1 }),
+  setCurrent: (idx: number) => {
+    set({ current: carouselItems[idx], active: idx + 1 });
+  },
   next: () => {
-    if (CAROUSEL_INDEX < carouselItems.length - 1) {
-      CAROUSEL_INDEX += 1;
-      set({
-        current: carouselItems[CAROUSEL_INDEX],
+    set((state) => {
+      const newIndex = state.active % carouselItems.length;
+      return {
+        current: carouselItems[newIndex],
         animationDirection: "left",
-        active: CAROUSEL_INDEX + 1,
-      });
-    } else {
-      CAROUSEL_INDEX = 0;
-      set({
-        current: carouselItems[CAROUSEL_INDEX],
-        animationDirection: "left",
-        active: 1,
-      });
-    }
+        active: newIndex + 1,
+      };
+    });
   },
   prev: () => {
-    if (CAROUSEL_INDEX > 0) {
-      CAROUSEL_INDEX -= 1;
-
-      set({
-        current: carouselItems[CAROUSEL_INDEX],
+    set((state) => {
+      const newIndex =
+        (state.active - 2 + carouselItems.length) % carouselItems.length;
+      return {
+        current: carouselItems[newIndex],
         animationDirection: "right",
-        active: CAROUSEL_INDEX + 1,
-      });
-    } else {
-      CAROUSEL_INDEX = carouselItems.length - 1;
-      set({
-        current: carouselItems[CAROUSEL_INDEX],
-        animationDirection: "right",
-        active: CAROUSEL_INDEX + 1,
-      });
-    }
+        active: newIndex + 1,
+      };
+    });
   },
 }));
