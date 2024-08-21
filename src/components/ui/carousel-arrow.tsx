@@ -11,13 +11,13 @@ export default function CarouselArrow() {
     <>
       <button
         onClick={prev}
-        className='w-[50px] h-[50px] border flex justify-center items-center pr-1 border-slate-400 drop-shadow-sm text-slate-400 rounded-full pointer-events-auto transition-all hover:bg-slate-300'
+        className='md:w-[50px] md:h-[50px] w-[30px] h-[30px]  border flex justify-center items-center pr-1 border-slate-400 drop-shadow-sm text-slate-400 rounded-full pointer-events-auto transition-all hover:bg-slate-300'
       >
         <ChevronLeft />
       </button>
       <button
         onClick={next}
-        className='w-[50px] h-[50px] border flex justify-center items-center pl-1 border-slate-400 drop-shadow-sm text-slate-400 rounded-full pointer-events-auto transition-all hover:bg-slate-300'
+        className='md:w-[50px] md:h-[50px] w-[30px] h-[30px]  border flex justify-center items-center pl-1 border-slate-400 drop-shadow-sm text-slate-400 rounded-full pointer-events-auto transition-all hover:bg-slate-300'
       >
         <ChevronRight />
       </button>

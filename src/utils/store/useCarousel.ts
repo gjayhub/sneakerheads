@@ -28,7 +28,7 @@ export const carouselItems: carouselItemsType[] = [
 
     image: "/hero-images/Nike.png",
     id: 1,
-    className: "text-header top-[35%] md:top-[18%] lg:top-[5%]",
+    className: " md:top-[18%] lg:top-[5%]",
   },
   {
     name: "Samba OG",
@@ -37,7 +37,7 @@ export const carouselItems: carouselItemsType[] = [
     brand: "Adidas",
     image: "/hero-images/adidas.png",
     id: 2,
-    className: "text-header top-[35%] md:top-[18%] lg:top-[5%]",
+    className: "md:top-[15%] lg:top-[5%]",
   },
   {
     name: "Old School",
@@ -47,7 +47,7 @@ export const carouselItems: carouselItemsType[] = [
 
     image: "/hero-images/Vans.png",
     id: 3,
-    className: "text-header top-[35%] md:top-[18%] lg:top-[5%]",
+    className: " md:top-[15%] lg:top-[5%]",
   },
   {
     name: "Star Player 76",
@@ -59,7 +59,7 @@ export const carouselItems: carouselItemsType[] = [
     image: "/hero-images/converse.png",
     id: 4,
     className:
-      "[font-size:clamp(4rem,10vw,17rem)] md:text-header lg:[font-size:clamp(4rem,10vw,17rem)] top-[35%] md:top-[18%] lg:top-[14%]",
+      "[font-size:clamp(8rem,10vw,17rem)] md:text-header lg:[font-size:clamp(4rem,10vw,17rem)] top-[15%] md:top-[18%] lg:top-[14%]",
   },
 ];
 

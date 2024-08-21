@@ -39,7 +39,7 @@ export default function Carousel() {
       >
         <h1
           className={cn(
-            "absolute inset-0  font-leage-gothic uppercase text-center",
+            "absolute inset-0  font-leage-gothic uppercase text-center [font-size:clamp(10rem,10vw,17rem)] md:text-header top-[12%]",
             current.className
           )}
         >
@@ -65,7 +65,7 @@ export default function Carousel() {
               />
             </motion.div>
           </figure>
-          <motion.div className='absolute z-20 max-w-[28%] h-full right-24 mt-20 flex flex-col justify-center items-start gap-10'>
+          <motion.div className='absolute z-20 md:max-w-[28%] h-full top-[75%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:-translate-x-0  md:-translate-y-[60%] flex flex-col justify-center items-end gap-4 md:gap-8'>
             <motion.h3
               initial={{
                 x: `calc(100vw * ${animationDirection == "right" ? "-1" : "1"}`,
