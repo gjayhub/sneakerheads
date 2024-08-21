@@ -3,27 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background: #ffffff;
+  --color: #000000;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--color);
+  background: var(--background);
+  overflow-x: hidden;
+}
+section {
+  overflow: hidden;
+}
+h1 {
+  font-weight: 900;
+}
+h3 {
+  font-weight: 600;
+}
+h6 {
+  font-weight: 300;
+}
+.fade-out {
+  --fade-start: 50%;
+  mask-image: linear-gradient(to bottom, white var(--fade-start), transparent);
 }
 
 @layer utilities {
