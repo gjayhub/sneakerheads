@@ -1,4 +1,3 @@
-import { Ticket } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import Button from "./ui/button";
@@ -37,7 +36,7 @@ export default function FeaturedSection() {
           <div className=' lg:grid-cols-1 relative '>
             <Image
               className=' lg:scale-[1.5] lg:-rotate-45 rotate-[-30deg] lg:-left-[20%] lg:-top-[40%] md:-top-[0]  object-cover lg:-translate-x-0 lg:-translate-y-0  absolute -translate-x-1/2 -translate-y-[60%] left-[40%]'
-              src='/sale.png '
+              src='/sale.png'
               alt='Todays special offer Image'
               height={500}
               width={500}
