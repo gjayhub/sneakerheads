@@ -6,7 +6,7 @@ import Button from "./ui/button";
 export default function FeaturedSection() {
   return (
     <section className='w-screen my-20 overflow-hidden '>
-      <h1 className='text-center text-4xl px-2'>Today's Special offer!</h1>
+      <h1 className='text-center text-4xl px-2'>Today&apos;s Special offer!</h1>
       <div className=' lg:h-[600px] h-[78vh] md:h-[65vh]  relative '>
         <Image
           className='lg:object-fill object-cover  h-full md:w-[80vw] mx-auto  '
