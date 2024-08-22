@@ -28,7 +28,7 @@ export const carouselItems: carouselItemsType[] = [
 
     image: "/hero-images/Nike.png",
     id: 1,
-    className: " md:top-[18%] lg:top-[5%]",
+    className: " md:top-[18%] lg:top-[0%]",
   },
   {
     name: "Samba OG",
@@ -37,7 +37,7 @@ export const carouselItems: carouselItemsType[] = [
     brand: "Adidas",
     image: "/hero-images/adidas.png",
     id: 2,
-    className: "md:top-[15%] lg:top-[5%]",
+    className: "md:top-[15%] lg:top-[0%]",
   },
   {
     name: "Old School",
@@ -47,7 +47,7 @@ export const carouselItems: carouselItemsType[] = [
 
     image: "/hero-images/Vans.png",
     id: 3,
-    className: " md:top-[15%] lg:top-[5%]",
+    className: " md:top-[15%] lg:top-[0%]",
   },
   {
     name: "Star Player 76",

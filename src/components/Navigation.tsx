@@ -9,7 +9,7 @@ import { useState } from "react";
 import { MenuButton } from "./ui/mobile-menu";
 import MobileNav from "./ui/mobile-nav";
 
-const navItems: navType[] = [
+export const navItems: navType[] = [
   { title: "New", url: "" },
   { title: "Trending", url: "" },
   {
@@ -26,7 +26,7 @@ const navItems: navType[] = [
 ];
 
 export default function Navigation() {
-  const isVisible = useHideOnScrollDown();
+  const { isVisible } = useHideOnScrollDown();
 
   return (
     <AnimatePresence>
@@ -44,7 +44,7 @@ export default function Navigation() {
             <div className='   hidden md:block '>
               <h1 className='text-xl '>SNEAKERHEADS</h1>
             </div>
-            <ul className='gap-8 hidden md:flex flex-1 place-content-center'>
+            <ul className='gap-8 hidden md:flex  '>
               {navItems.map((nav, idx) => (
                 <NavigationMenu key={idx}>
                   <NavigationMenuList>
