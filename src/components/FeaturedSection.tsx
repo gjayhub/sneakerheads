@@ -5,17 +5,19 @@ import Button from "./ui/button";
 export default function FeaturedSection() {
   return (
     <section className='w-screen my-20 overflow-hidden '>
-      <h1 className='text-center text-4xl px-2'>Today&apos;s Special offer!</h1>
-      <div className=' lg:h-[600px] h-[78vh] md:h-[65vh]  relative '>
+      <h1 className='text-center  overflow-hidden text-4xl max-w-[90vw] mx-auto'>
+        Today&apos;s Special offer!
+      </h1>
+      <div className='  lg:h-[600px] h-[80vh] md:h-[65vh]  relative '>
         <Image
           className='lg:object-fill object-cover  h-full md:w-[80vw] mx-auto  '
           src='/paper.png'
           height={300}
-          width={1000}
+          width={400}
           alt='paper background'
         />
-        <div className=' absolute lg:h-auto lg:top-[15%] top-9 left-[10%]  grid lg:grid-cols-3 [grid-template-rows:300px_200px_300px] w-[80vw] mx-auto'>
-          <div className='flex lg:flex-col z-10 justify-center md:justify-start md:ml-8 lg:ml-0 items-center  lg:grid-cols-1 '>
+        <div className='absolute lg:h-auto lg:top-[15%] top-2 left-[10%]  grid lg:grid-cols-3 [grid-template-rows:300px_200px_300px] w-[80vw] mx-auto'>
+          <div className=' flex lg:flex-col z-10 justify-center md:justify-start md:ml-8 lg:ml-0 items-center  lg:grid-cols-1 '>
             <div className='relative  '>
               <Image
                 className='w-[150px] lg:w-full'
@@ -42,7 +44,7 @@ export default function FeaturedSection() {
               width={500}
             />
           </div>
-          <div className='lg:relative lg:grid-cols-1 flex px-4 flex-col w-full lg:-bottom-0   lg:justify-end gap-4 ml-4 lg:pr-8 absolute bottom-[35%] md:right-0 md:w-[300px] md:bottom-[40%]'>
+          <div className=' lg:relative lg:grid-cols-1 flex px-4 flex-col w-full lg:-bottom-0   lg:justify-end gap-4  lg:pr-8 absolute bottom-[35%] md:right-0 md:w-[300px] md:bottom-[40%]'>
             <h3 className='text-2xl lg:text-5xl '>Pegasus 41 Electric</h3>
             <p className='lg:text-xl text-lg lg:mt-10'>
               ₱ :{" "}
