@@ -10,11 +10,20 @@ import { MenuButton } from "./ui/mobile-menu";
 import MobileNav from "./ui/mobile-nav";
 
 export const navItems: navType[] = [
-  { title: "New", url: "" },
-  { title: "Trending", url: "" },
+  {
+    title: "New",
+    url: "",
+    icon: "/new.png",
+  },
+  {
+    title: "Trending",
+    url: "",
+    icon: "/flame.png",
+  },
   {
     title: "Brands",
     url: "",
+    icon: "/brand.svg",
     subNav: [
       { title: "Vans", url: "" },
       { title: "Nike", url: "" },
@@ -22,7 +31,11 @@ export const navItems: navType[] = [
       { title: "Adidas", url: "" },
     ],
   },
-  { title: "Sale", url: "" },
+  {
+    title: "Sale",
+    url: "",
+    icon: "/discount.png",
+  },
 ];
 
 export default function Navigation() {
