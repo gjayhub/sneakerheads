@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "./useDebounce";
 
 export const useHideOnScrollDown = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const dbScrollY = useDebounce(scrollY, 50);
