@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function SpecialOffer() {
   return (
     <section className='w-screen my-20 overflow-hidden '>
-      <h1 className='text-center md:py-5 overflow-hidden max-w-[90vw] mx-auto'>
+      <h1 className='text-center md:text-left md:py-5 overflow-hidden md:max-w-[70vw] mx-auto'>
         Today&apos;s Special offer!
       </h1>
       <div className=' lg:h-[600px] h-[80vh] md:h-[65vh] z-10 relative '>

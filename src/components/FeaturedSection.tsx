@@ -8,11 +8,11 @@ export default function FeaturedSection() {
   return (
     <section>
       <div>
-        <h1 className='text-center md:py-5 overflow-hidden max-w-[90vw] mx-auto'>
+        <h1 className='text-center md:text-left md:py-5 overflow-hidden md:max-w-[70vw] mx-auto'>
           Step into the Ber Months with Style
         </h1>
 
-        <h6 className='max-w-[900px] text-center mx-auto mb-5'>
+        <h6 className='text-center md:text-left md:max-w-[70vw] mx-auto mb-5'>
           Discover the latest Shoe collection, perfect for the cozy vibes and
           festive spirit of the season.
         </h6>
