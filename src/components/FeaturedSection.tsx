@@ -6,18 +6,18 @@ import { cn } from "@/lib/utils";
 
 export default function FeaturedSection() {
   return (
-    <section>
+    <section className='max-w-[1200px] mx-auto'>
       <div>
-        <h1 className='text-center md:text-left md:py-5 overflow-hidden md:max-w-[70vw] mx-auto'>
+        <h1 className='text-center md:text-left md:py-5 overflow-hidden '>
           Step into the Ber Months with Style
         </h1>
 
-        <h6 className='text-center md:text-left md:max-w-[70vw] mx-auto mb-5'>
+        <h6 className='text-center md:text-left  mb-5'>
           Discover the latest Shoe collection, perfect for the cozy vibes and
           festive spirit of the season.
         </h6>
       </div>
-      <BentoGrid className='max-w-7xl mx-auto md:auto-rows-[40rem]  bento-list'>
+      <BentoGrid className='max-w-7xl mx-auto md:auto-rows-[30rem] lg:auto-rows-[40rem]  bento-list'>
         {items.map((item, i) => (
           <BentoGridItem
             key={i}

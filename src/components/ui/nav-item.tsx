@@ -56,9 +56,9 @@ export default function NavItem({ nav }: { nav: navType }) {
 
 const SubMenu = ({ submenu }: { submenu: navType[] | undefined }) => {
   return (
-    <NavigationMenuContent className='px-2 pb-2 flex flex-col justify-center'>
+    <NavigationMenuContent className='px-2 bg-white pb-2 flex flex-col justify-center'>
       {submenu?.map((subNav, idx) => (
-        <div key={idx} className='hover:bg-slate-100 '>
+        <div key={idx} className=''>
           <Link href={subNav.url}>{subNav.title}</Link>
         </div>
       ))}
