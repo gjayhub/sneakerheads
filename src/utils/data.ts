@@ -4,7 +4,7 @@ export const shoes = [
     price: 4999.0,
     description:
       "A stylish and durable leather shoe designed for comfort and fashion.",
-    availableSizes: ["7", "8", "9", "10", "11"],
+    availableSizes: ["7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Vans",
     category: "Casual",
     images: [
@@ -20,7 +20,7 @@ export const shoes = [
     price: 4599.0,
     description:
       "Chukka boots with a modern twist, offering both style and comfort.",
-    availableSizes: ["6", "7", "8", "9", "10", "11"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Vans",
     category: "Boots",
     images: [
@@ -35,7 +35,7 @@ export const shoes = [
     name: "Knu Skool",
     price: 4999.0,
     description: "Retro-inspired sneakers with a chunky sole and bold design.",
-    availableSizes: ["7", "8", "9", "10", "11", "12"],
+    availableSizes: ["7", "8", "8.5", "9", "9.5", "10", "11", "12"],
     brand: "Vans",
     category: "Sneakers",
     images: [
@@ -51,7 +51,7 @@ export const shoes = [
     price: 4399.0,
     description:
       "Low-profile sneakers perfect for everyday wear and casual outings.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Vans",
     category: "Sport",
     images: [
@@ -67,7 +67,7 @@ export const shoes = [
     price: 3999.0,
     description:
       "Classic and versatile sneakers with a simple yet iconic design.",
-    availableSizes: ["5", "6", "7", "8", "9", "10"],
+    availableSizes: ["5", "6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Vans",
     category: "Casual",
     images: [
@@ -83,7 +83,7 @@ export const shoes = [
     price: 4599.0,
     description:
       "Featuring the iconic Old Skool design with a primary check pattern.",
-    availableSizes: ["6", "7", "8", "9", "10", "11"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Vans",
     category: "Skate",
     images: [
@@ -99,7 +99,7 @@ export const shoes = [
     price: 4799.0,
     description:
       "Leather sneakers with ComfyCush technology for extra comfort.",
-    availableSizes: ["7", "8", "9", "10", "11"],
+    availableSizes: ["7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Vans",
     category: "Casual",
     images: [
@@ -114,7 +114,7 @@ export const shoes = [
     name: "Classic Slip-On",
     price: 3799.0,
     description: "Slip-on sneakers with a classic design and easy wearability.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Vans",
     category: "Slip-On",
     images: [
@@ -129,7 +129,7 @@ export const shoes = [
     name: "Classic Slip-On Checkerboard",
     price: 3899.0,
     description: "Iconic checkerboard slip-on sneakers that stand out.",
-    availableSizes: ["5", "6", "7", "8", "9"],
+    availableSizes: ["5", "6", "7", "8", "8.5", "9"],
     brand: "Vans",
     category: "Slip-On",
     images: [
@@ -145,7 +145,7 @@ export const shoes = [
     price: 4599.0,
     description:
       "A staple in the Vans lineup with classic skate style and design.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Vans",
     category: "Skate",
     images: [
@@ -161,7 +161,7 @@ export const shoes = [
     price: 4999.0,
     description:
       "Classic Adidas sneakers known for their timeless design and comfort.",
-    availableSizes: ["6", "7", "8", "9", "10", "11"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Adidas",
     category: "Casual",
     images: [
@@ -178,7 +178,7 @@ export const shoes = [
     price: 8999.0,
     description:
       "High-performance running shoes featuring 4D printed midsoles for superior cushioning.",
-    availableSizes: ["7", "8", "9", "10", "11", "12"],
+    availableSizes: ["7", "8", "8.5", "9", "9.5", "10", "11", "12"],
     brand: "Adidas",
     category: "Running",
     images: [
@@ -195,7 +195,7 @@ export const shoes = [
     price: 4599.0,
     description:
       "Versatile basketball shoes designed for both performance and style on the court.",
-    availableSizes: ["6", "7", "8", "9", "10", "11"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Adidas",
     category: "Basketball",
     images: [
@@ -212,7 +212,7 @@ export const shoes = [
     price: 4999.0,
     description:
       "Retro-inspired sneakers with a sleek design and comfortable fit.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Adidas",
     category: "Casual",
     images: [
@@ -229,7 +229,7 @@ export const shoes = [
     price: 4299.0,
     description:
       "Iconic tennis shoes known for their minimalist style and classic appeal.",
-    availableSizes: ["5", "6", "7", "8", "9", "10"],
+    availableSizes: ["5", "6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Adidas",
     category: "Casual",
     images: [
@@ -246,7 +246,7 @@ export const shoes = [
     price: 4799.0,
     description:
       "Classic soccer-inspired sneakers with a retro look and comfortable feel.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Adidas",
     category: "Casual",
     images: [
@@ -263,7 +263,7 @@ export const shoes = [
     price: 4999.0,
     description:
       "A limited edition Chuck 70 collaboration with Wonka, featuring unique design elements.",
-    availableSizes: ["6", "7", "8", "9", "10", "11"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Converse",
     category: "Casual",
     images: [
@@ -280,7 +280,7 @@ export const shoes = [
     price: 4799.0,
     description:
       "Classic basketball-inspired shoes with a retro design and comfortable fit.",
-    availableSizes: ["6", "7", "8", "9", "10", "11"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Converse",
     category: "Basketball",
     images: [
@@ -297,7 +297,7 @@ export const shoes = [
     price: 4399.0,
     description:
       "A stylish and comfortable version of the iconic Chuck Taylor All Star, designed for everyday wear.",
-    availableSizes: ["5", "6", "7", "8", "9", "10"],
+    availableSizes: ["5", "6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Converse",
     category: "Casual",
     images: [
@@ -314,7 +314,7 @@ export const shoes = [
     price: 4999.0,
     description:
       "A special edition Chuck 70 featuring artwork inspired by Dungeons and Dragons.",
-    availableSizes: ["6", "7", "8", "9", "10", "11"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Converse",
     category: "Casual",
     images: [
@@ -331,7 +331,7 @@ export const shoes = [
     price: 4599.0,
     description:
       "A sleek, all-monochrome version of the Chuck 70 with a minimalist design.",
-    availableSizes: ["6", "7", "8", "9", "10", "11"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Converse",
     category: "Casual",
     images: [
@@ -348,7 +348,7 @@ export const shoes = [
     price: 4699.0,
     description:
       "Premium canvas sneakers with a vintage look and modern comfort.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Converse",
     category: "Casual",
     images: [
@@ -365,7 +365,7 @@ export const shoes = [
     price: 4799.0,
     description:
       "Suede sneakers with a stylish design and enhanced durability.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Converse",
     category: "Casual",
     images: [
@@ -382,7 +382,7 @@ export const shoes = [
     price: 4399.0,
     description:
       "Classic Star Player sneakers with a retro design and comfortable fit.",
-    availableSizes: ["5", "6", "7", "8", "9", "10"],
+    availableSizes: ["5", "6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Converse",
     category: "Casual",
     images: [
@@ -399,7 +399,7 @@ export const shoes = [
     price: 3999.0,
     description:
       "The iconic Chuck Taylor All Star with a classic design and versatile style.",
-    availableSizes: ["5", "6", "7", "8", "9", "10"],
+    availableSizes: ["5", "6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Converse",
     category: "Casual",
     images: [
@@ -416,7 +416,7 @@ export const shoes = [
     price: 4299.0,
     description:
       "A premium version of the Chuck Taylor with upgraded materials and design.",
-    availableSizes: ["5", "6", "7", "8", "9", "10"],
+    availableSizes: ["5", "6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Converse",
     category: "Casual",
     images: [
@@ -433,7 +433,7 @@ export const shoes = [
     price: 7999.0,
     description:
       "A stylish and durable shoe designed for both performance and casual wear.",
-    availableSizes: ["7", "8", "9", "10", "11", "12"],
+    availableSizes: ["7", "8", "8.5", "9", "9.5", "10", "11", "12"],
     brand: "Nike",
     category: "Casual",
     images: [
@@ -450,7 +450,7 @@ export const shoes = [
     price: 8999.0,
     description:
       "High-performance basketball shoes with advanced cushioning and support.",
-    availableSizes: ["7", "8", "9", "10", "11"],
+    availableSizes: ["7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Nike",
     category: "Basketball",
     images: [
@@ -467,7 +467,7 @@ export const shoes = [
     price: 7999.0,
     description:
       "Signature shoes featuring sleek design and top-notch performance features.",
-    availableSizes: ["7", "8", "9", "10", "11", "12"],
+    availableSizes: ["7", "8", "8.5", "9", "9.5", "10", "11", "12"],
     brand: "Nike",
     category: "Basketball",
     images: [
@@ -484,7 +484,7 @@ export const shoes = [
     price: 4999.0,
     description:
       "Stylish and versatile sneakers designed for comfort and daily wear.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Nike",
     category: "Casual",
     images: [
@@ -501,7 +501,7 @@ export const shoes = [
     price: 4599.0,
     description:
       "Performance basketball shoes providing excellent grip and comfort on the court.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Nike",
     category: "Basketball",
     images: [
@@ -518,7 +518,7 @@ export const shoes = [
     price: 5499.0,
     description:
       "A modern take on the classic Air Jordan 1 with updated materials and design.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Nike",
     category: "Casual",
     images: [
@@ -535,7 +535,7 @@ export const shoes = [
     price: 5999.0,
     description:
       "Classic SB Dunk Low sneakers with premium materials and unique design elements.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Nike",
     category: "Skate",
     images: [
@@ -552,7 +552,7 @@ export const shoes = [
     price: 7999.0,
     description:
       "High-performance running shoes with advanced cushioning and support for a smooth ride.",
-    availableSizes: ["7", "8", "9", "10", "11"],
+    availableSizes: ["7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Nike",
     category: "Running",
     images: [
@@ -569,7 +569,7 @@ export const shoes = [
     price: 5499.0,
     description:
       "A modern update on the iconic Air Force 1 with premium details and enhanced comfort.",
-    availableSizes: ["6", "7", "8", "9", "10"],
+    availableSizes: ["6", "7", "8", "8.5", "9", "9.5", "10"],
     brand: "Nike",
     category: "Casual",
     images: [
@@ -586,7 +586,7 @@ export const shoes = [
     price: 10999.0,
     description:
       "Limited edition Air Jordan 4 with a retro design and unique 'Wet Cement' colorway.",
-    availableSizes: ["7", "8", "9", "10", "11"],
+    availableSizes: ["7", "8", "8.5", "9", "9.5", "10", "11"],
     brand: "Nike",
     category: "Casual",
     images: [

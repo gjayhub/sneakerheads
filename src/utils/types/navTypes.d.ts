@@ -3,6 +3,6 @@ import { ReactNode } from "react";
 export type navType = {
   title: string;
   url: string;
-  subNav?: navType[];
+  subNav?: string[];
   icon?: string;
 };

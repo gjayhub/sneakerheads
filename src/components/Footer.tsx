@@ -5,12 +5,15 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className='mt-20 overflow-hidden'>
-      <div className='bg-black flex flex-col pb-4 justify-center items-center'>
+      <div className='bg-black flex flex-col justify-center items-center'>
         <h3 className='text-white text-center'>
           Create your account and get 20% off and free shipping on your first
           order!
         </h3>
-        <Button type='secondary' className=' underline  bg-white w-fit '>
+        <Button
+          type='secondary'
+          className=' underline font-semibold bg-white w-fit '
+        >
           SIGNUP
         </Button>
       </div>

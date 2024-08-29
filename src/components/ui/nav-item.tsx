@@ -7,10 +7,12 @@ import {
   NavigationMenuItem,
   NavigationMenuTrigger,
 } from "./navigation-menu";
+import { usePathname } from "next/navigation";
 
 export default function NavItem({ nav }: { nav: navType }) {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const navItemRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   const handleSubNavClick = () => {
     setIsClicked((prev) => !prev);
@@ -32,11 +34,21 @@ export default function NavItem({ nav }: { nav: navType }) {
     };
   }, []);
 
+  const determineHref = () => {
+    if (pathname === "/") {
+      return `/shoes/${nav.url}`;
+    }
+    if (pathname === "/shoes") {
+      return nav.url;
+    }
+    return nav.url; // Default case if no conditions match
+  };
+
   return (
     <div
       ref={navItemRef}
       onClick={handleSubNavClick}
-      className='relative  [&>p]:hover:flex [&>div]:opacity-0 [&>div]:scale-0 [&>div]:hover:opacity-100 [&>div]:hover:scale-150'
+      className='relative [&>p]:hover:flex [&>div]:opacity-0 [&>div]:scale-0 [&>div]:hover:opacity-100 [&>div]:hover:scale-150'
     >
       <NavigationMenuItem>
         {nav.subNav ? (
@@ -45,7 +57,7 @@ export default function NavItem({ nav }: { nav: navType }) {
             <SubMenu submenu={nav.subNav} />
           </>
         ) : (
-          <Link href={nav.url}>{nav.title}</Link>
+          <Link href={determineHref()}>{nav.title}</Link>
         )}
       </NavigationMenuItem>
 
@@ -54,12 +66,14 @@ export default function NavItem({ nav }: { nav: navType }) {
   );
 }
 
-const SubMenu = ({ submenu }: { submenu: navType[] | undefined }) => {
+const SubMenu = ({ submenu }: { submenu: string[] | undefined }) => {
   return (
     <NavigationMenuContent className='px-2 bg-white pb-2 flex flex-col justify-center'>
       {submenu?.map((subNav, idx) => (
         <div key={idx} className=''>
-          <Link href={subNav.url}>{subNav.title}</Link>
+          <Link className='capitalize' href={subNav}>
+            {subNav}
+          </Link>
         </div>
       ))}
     </NavigationMenuContent>

@@ -5,35 +5,29 @@ import { Heart, Search, ShoppingBag } from "lucide-react";
 import NavItem from "./ui/nav-item";
 import { navType } from "@/utils/types/navTypes";
 import { NavigationMenu, NavigationMenuList } from "./ui/navigation-menu";
-import { useState } from "react";
-import { MenuButton } from "./ui/mobile-menu";
+
 import MobileNav from "./ui/mobile-nav";
 
 export const navItems: navType[] = [
   {
     title: "New",
-    url: "",
+    url: "new",
     icon: "/new.png",
   },
   {
-    title: "Trending",
-    url: "",
+    title: "Popular",
+    url: "popular",
     icon: "/flame.png",
   },
   {
     title: "Brands",
     url: "",
     icon: "/brand.svg",
-    subNav: [
-      { title: "Vans", url: "" },
-      { title: "Nike", url: "" },
-      { title: "Converse", url: "" },
-      { title: "Adidas", url: "" },
-    ],
+    subNav: ["vans", "nike", "converse", "adidas"],
   },
   {
     title: "Sale",
-    url: "",
+    url: "/shoes/sale",
     icon: "/discount.png",
   },
 ];
