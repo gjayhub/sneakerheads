@@ -60,8 +60,8 @@ export default function Carousel() {
                 className='w-full '
                 src={current.image}
                 alt='Nike JA Shoes'
-                height={800}
-                width={700}
+                height={400}
+                width={400}
               />
             </motion.div>
           </figure>

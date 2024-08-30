@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useHideOnScrollDown } from "@/utils/hooks/useHideOnScroll";
+
 import { useMobileNav } from "@/utils/store/useMobileNav";
 
 type subNavType = {
@@ -34,6 +34,15 @@ export default function Dropdown({
   const searchParams = useSearchParams();
   const { setIsMobileNavOpen } = useMobileNav();
 
+  const determineHref = (url: string) => {
+    if (pathname === "/") {
+      return `/shoes?${url}`;
+    }
+    if (pathname === "/shoes") {
+      return `?${url}`;
+    }
+    return url; // Default case if no conditions match
+  };
   const listVariants = {
     hidden: { height: 0, opacity: 0 },
     visible: {
@@ -66,7 +75,6 @@ export default function Dropdown({
 
     setIsMobileNavOpen(false);
   };
-  const sort = searchParams.get("sort");
 
   const sortUrl = (url: string) => {
     const params = new URLSearchParams(searchParams);
@@ -137,7 +145,7 @@ export default function Dropdown({
                     handleLinkClick(e, item)
                   }
                 >
-                  <Link className='capitalize' href={item}>
+                  <Link className='capitalize' href={determineHref(item)}>
                     {item}
                   </Link>
                 </motion.li>

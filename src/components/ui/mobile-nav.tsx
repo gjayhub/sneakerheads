@@ -8,6 +8,7 @@ import { Heart, ShoppingBag, User } from "lucide-react";
 import Dropdown from "./dropdown";
 import { url } from "inspector";
 import { useMobileNav } from "@/utils/store/useMobileNav";
+import { usePathname } from "next/navigation";
 
 const userNav = [
   {
@@ -35,6 +36,16 @@ export default function MobileNav() {
   const handleMenuButton = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
     setIsDetailsOpen(false);
+  };
+  const pathname = usePathname();
+  const determineHref = (url: string) => {
+    if (pathname === "/") {
+      return `/shoes?${url}`;
+    }
+    if (pathname === "/shoes") {
+      return `?${url}`;
+    }
+    return url; // Default case if no conditions match
   };
 
   return (
@@ -65,7 +76,10 @@ export default function MobileNav() {
                         />
                       ) : (
                         <div className='flex'>
-                          <Link href={nav.url} className='text-lg'>
+                          <Link
+                            href={determineHref(nav.url)}
+                            className='text-lg'
+                          >
                             {nav.title}
                           </Link>
                         </div>

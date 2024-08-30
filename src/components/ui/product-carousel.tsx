@@ -38,7 +38,7 @@ export default function ProductCarousel({ shoes }: { shoes: ShoeTypes[] }) {
             min: 0,
           },
           items: 2,
-          partialVisibilityGutter: 40,
+          partialVisibilityGutter: 10,
         },
         tablet: {
           breakpoint: {
