@@ -5,8 +5,8 @@ import { useSearchParams } from "next/navigation";
 
 const sortItems = [
   { title: "What's New", url: "new" },
-  { title: "Price Low To High", url: "price_desc" },
-  { title: "Price High To Low", url: "price_asc" },
+  { title: "Price Low To High", url: "price_asc" },
+  { title: "Price High To Low", url: "price_desc" },
   { title: "Popular", url: "popular" },
 ];
 
@@ -26,7 +26,7 @@ export default function SortDropdown() {
       setIsOpen={setIsSortOpen}
       items={sortItems}
       setSelected={setSelected}
-      itemsClassName='absolute bg-white w-full right-0 text-sm'
+      itemsClassName='absolute bg-white w-full right-0 text-sm z-20'
     />
   );
 }

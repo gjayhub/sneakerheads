@@ -1,36 +1,50 @@
 import React, { Suspense } from "react";
 import BreadCrumbs from "./BreadCrumbs";
-import Dropdown from "@/components/ui/dropdown";
+
 import SortDropdown from "./SortDropdown";
 import { Separator } from "@/components/ui/separator";
 import Brands from "./Brands";
 import Sizes from "./Sizes";
 import PriceRange from "./PriceRange";
+import { shoes } from "@/utils/data";
+import ProductCard from "@/components/ui/product-card";
+import { Filter } from "lucide-react";
+import ProductList from "./ProductList";
+import { getShoes } from "@/utils/actions/getShoes";
 type brandsType = { slug: string };
-export default function Shoes({
-  params,
+export default async function Shoes({
   searchParams,
 }: {
-  params: brandsType;
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
+  const headerTitle = searchParams?.brand || "All Shoes";
+  const { data: shoes } = await getShoes({
+    ...searchParams,
+    page: 1,
+    offset: 12,
+  });
   return (
-    <div className='h- relative px-10'>
+    <div className='h-auto relative md:px-10 px-2'>
       <Separator className='my-16' orientation='horizontal' />
 
-      <div className='max-w-[1400px] h-full mx-auto '>
+      <div className='max-w-[1400px] mx-auto '>
         <BreadCrumbs />
 
-        <h6 className='capitalize mt-10'>All Shoes</h6>
+        <h6 className='capitalize mt-10'>{headerTitle}</h6>
         <div className='flex justify-between'>
           <p className='text-gray-400'>20 items</p>
-          <Suspense fallback={<p>Loading</p>}>
-            <SortDropdown />
-          </Suspense>
+          <div className='flex gap-6 items-center'>
+            <button className='md:hidden flex items-center gap-2 '>
+              Filter <Filter className='mt-1' size={17} />
+            </button>
+            <Suspense fallback={<p>Loading</p>}>
+              <SortDropdown />
+            </Suspense>
+          </div>
         </div>
 
-        <div className='h-screen grid grid-cols-12 mt-5 '>
-          <div className='col-span-2 border-r'>
+        <div className='h-screen md:grid grid-cols-12 mt-5 '>
+          <div className='col-span-2 border-r hidden md:block'>
             <Brands searchParams={searchParams} />
             <Separator className='' orientation='horizontal' />
 
@@ -40,7 +54,9 @@ export default function Shoes({
               <PriceRange />
             </Suspense>
           </div>
-          <div className='col-span-10'>Product List</div>
+          <div className='col-span-10 h-full overflow-x-hidden overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]'>
+            <ProductList shoes={shoes} />
+          </div>
         </div>
       </div>
     </div>

@@ -11,12 +11,12 @@ import MobileNav from "./ui/mobile-nav";
 export const navItems: navType[] = [
   {
     title: "New",
-    url: "new",
+    url: "sort=new",
     icon: "/new.png",
   },
   {
     title: "Popular",
-    url: "popular",
+    url: "sort=popular",
     icon: "/flame.png",
   },
   {

@@ -34,14 +34,14 @@ export default function NavItem({ nav }: { nav: navType }) {
     };
   }, []);
 
-  const determineHref = () => {
+  const determineHref = (url: string) => {
     if (pathname === "/") {
-      return `/shoes/${nav.url}`;
+      return `/shoes?${url}`;
     }
     if (pathname === "/shoes") {
-      return nav.url;
+      return `?${url}`;
     }
-    return nav.url; // Default case if no conditions match
+    return url; // Default case if no conditions match
   };
 
   return (
@@ -57,7 +57,7 @@ export default function NavItem({ nav }: { nav: navType }) {
             <SubMenu submenu={nav.subNav} />
           </>
         ) : (
-          <Link href={determineHref()}>{nav.title}</Link>
+          <Link href={determineHref(nav.url)}>{nav.title}</Link>
         )}
       </NavigationMenuItem>
 
@@ -67,11 +67,21 @@ export default function NavItem({ nav }: { nav: navType }) {
 }
 
 const SubMenu = ({ submenu }: { submenu: string[] | undefined }) => {
+  const pathname = usePathname();
+  const determineHref = (url: string) => {
+    if (pathname === "/") {
+      return `/shoes?brand=${url}`;
+    }
+    if (pathname === "/shoes") {
+      return `?brand=${url}`;
+    }
+    return url; // Default case if no conditions match
+  };
   return (
     <NavigationMenuContent className='px-2 bg-white pb-2 flex flex-col justify-center'>
       {submenu?.map((subNav, idx) => (
         <div key={idx} className=''>
-          <Link className='capitalize' href={subNav}>
+          <Link className='capitalize' href={determineHref(subNav)}>
             {subNav}
           </Link>
         </div>

@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 type ProductCardType = {
@@ -6,6 +7,9 @@ type ProductCardType = {
   id: number;
   price: number;
   brand: string;
+  cardContainer?: string;
+  imageContainerStyle?: string;
+  imgStyle?: string;
 };
 export default function ProductCard({
   name,
@@ -13,24 +17,34 @@ export default function ProductCard({
   id,
   price,
   brand,
+  cardContainer,
+  imageContainerStyle,
+  imgStyle,
 }: ProductCardType) {
   return (
-    <div className=''>
-      <div className='relative [&>p]:hover:bottom-2'>
+    <div className={cn("w-full", cardContainer)}>
+      <div
+        className={cn("relative [&>p]:hover:bottom-2 ", imageContainerStyle)}
+      >
+        {/**/}
         <Image
-          className='object-cover lg:h-[250px] md:h-[200px] h-[150px]  aspect-square w-full '
+          className={cn(
+            "object-cover transition-transform hover:scale-105 lg:h-[250px] md:h-[200px] h-[200px]  aspect-square w-full ",
+            imgStyle
+          )}
           src={image}
           alt={name}
-          height={200}
           width={200}
+          height={200}
         />
         <p className='absolute bottom-1 left-1  transition-all bg-white rounded-[5px] px-2'>
-          {" "}
           ₱ : <span className='text-sm '>{price}</span>
         </p>
       </div>
 
-      <h6 className='text-lg font-bold text-neutral-600  '>{name}</h6>
+      <h6 className='text-lg font-bold text-neutral-600 text-wrap w-'>
+        {name}
+      </h6>
       <p>{brand}</p>
     </div>
   );
