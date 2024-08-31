@@ -5,10 +5,11 @@ import Image from "next/image";
 import { animate, AnimatePresence, motion } from "framer-motion";
 import { useCarousel } from "@/utils/store/useCarousel";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function Carousel() {
   const { current, animationDirection, next } = useCarousel();
-
+  const router = useRouter();
   useEffect(() => {
     const intervalId = setInterval(() => {
       next();
@@ -103,7 +104,9 @@ export default function Carousel() {
               >
                 BUY
               </Button>
+
               <Button
+                onClick={() => router.push(`/shoes?brand=${current.brand}`)}
                 className='col-span-1  text-sm lg:text-base'
                 type='secondary'
               >

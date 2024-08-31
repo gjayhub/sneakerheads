@@ -3,8 +3,7 @@ import React, { ReactNode } from "react";
 type ButtonType = {
   type: "primary" | "secondary";
   className?: string;
-  children: ReactNode;
-};
+} & React.HTMLAttributes<HTMLButtonElement>;
 export default function Button({
   type,
   children,

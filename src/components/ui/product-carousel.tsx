@@ -29,7 +29,7 @@ export default function ProductCarousel({ shoes }: { shoes: ShoeTypes[] }) {
             max: 3000,
             min: 1024,
           },
-          items: 4,
+          items: 3,
           partialVisibilityGutter: 40,
         },
         mobile: {
@@ -45,7 +45,7 @@ export default function ProductCarousel({ shoes }: { shoes: ShoeTypes[] }) {
             max: 1024,
             min: 464,
           },
-          items: 3,
+          items: 2,
           partialVisibilityGutter: 40,
         },
       }}

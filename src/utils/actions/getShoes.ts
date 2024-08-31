@@ -14,7 +14,7 @@ export const getShoes = ({
   size,
   sort,
   page = 1,
-  offset = 12,
+  offset = 24,
   brand,
 }: {
   minPrice?: string;
@@ -44,8 +44,8 @@ export const getShoes = ({
           : true;
         const isMatchingSize =
           sizesArray.length > 0
-            ? shoe.availableSizes.some((availableSize) =>
-                sizesArray.includes(parseInt(availableSize))
+            ? sizesArray.every((s) =>
+                shoe.availableSizes.includes(s.toString())
               )
             : true;
 

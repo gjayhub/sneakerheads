@@ -50,7 +50,7 @@ export default function NavItem({ nav }: { nav: navType }) {
       onClick={handleSubNavClick}
       className='relative [&>p]:hover:flex [&>div]:opacity-0 [&>div]:scale-0 [&>div]:hover:opacity-100 [&>div]:hover:scale-150'
     >
-      <NavigationMenuItem>
+      <NavigationMenuItem className={nav.className}>
         {nav.subNav ? (
           <>
             <NavigationMenuTrigger>{nav.title}</NavigationMenuTrigger>

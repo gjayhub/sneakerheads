@@ -29,13 +29,13 @@ export default function ProductCard({
         {/**/}
         <Image
           className={cn(
-            "object-cover transition-transform hover:scale-105 lg:h-[250px] md:h-[200px] h-[200px]  aspect-square w-full ",
+            "object-cover transition-transform hover:scale-105 lg:h-[400px] md:h-[250px] h-[200px]  aspect-square w-full ",
             imgStyle
           )}
           src={image}
           alt={name}
-          width={200}
-          height={200}
+          width={300}
+          height={300}
         />
         <p className='absolute bottom-1 left-1  transition-all bg-white rounded-[5px] px-2'>
           ₱ : <span className='text-sm '>{price}</span>

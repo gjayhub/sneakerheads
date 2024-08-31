@@ -1,21 +1,16 @@
-import React, { Suspense } from "react";
-import BreadCrumbs from "./BreadCrumbs";
-
-import SortDropdown from "./SortDropdown";
 import { Separator } from "@/components/ui/separator";
-import Brands from "./Brands";
-import Sizes from "./Sizes";
-import PriceRange from "./PriceRange";
-import { shoes } from "@/utils/data";
-
-import ProductList from "./ProductList";
-
+import React, { Suspense } from "react";
+import BreadCrumbs from "./components/BreadCrumbs";
+import TotalShoes from "./components/TotalShoes";
+import SortDropdown from "./components/SortDropdown";
+import FilterToggle from "./components/FilterToggle";
+import Filters from "./components/Filters";
+import Brands from "./components/Brands";
+import Sizes from "./components/Sizes";
+import PriceRange from "./components/PriceRange";
+import ProductList from "./components/ProductList";
 import ProductSkeleton from "@/components/skeleton/ProductSkeleton";
-import Filters from "./Filters";
-import FilterToggle from "./FilterToggle";
-import { getShoes } from "@/utils/actions/getShoes";
-import TotalShoes from "./TotalShoes";
-type brandsType = { slug: string };
+
 export default function Shoes({
   searchParams,
 }: {
@@ -26,12 +21,12 @@ export default function Shoes({
 
   return (
     <div className='h-auto relative md:px-10 px-2'>
-      <Separator className='my-16' orientation='horizontal' />
+      <Separator className='my-10' orientation='horizontal' />
 
       <div className='max-w-[1400px] mx-auto '>
         <BreadCrumbs brand={brand} />
 
-        <h6 className='capitalize mt-10'>{headerTitle}</h6>
+        <h6 className='capitalize mt-5'>{headerTitle}</h6>
         <div className='flex justify-between'>
           <Suspense
             key={Math.random()}

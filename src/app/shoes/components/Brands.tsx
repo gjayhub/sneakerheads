@@ -26,7 +26,7 @@ export default function Brands({
           <Link
             href={{
               pathname: `/shoes`,
-              query: { ...searchParams, brand: brand.name },
+              query: { ...searchParams, brand: brand.name, page: 1 },
             }}
             key={idx}
             className='ml-2 mb-4 '

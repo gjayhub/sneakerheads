@@ -22,7 +22,7 @@ export default function PriceRange() {
       // Only push the route if there is a valid filter
       if (debouncedMinPrice !== 1000 || debouncedMaxPrice !== 10000) {
         const params = new URLSearchParams(searchParams.toString());
-
+        params.delete("page");
         params.set("minPrice", debouncedMinPrice.toString());
         params.set("maxPrice", debouncedMaxPrice.toString());
         router.push(`${pathname}?${params.toString()}`);

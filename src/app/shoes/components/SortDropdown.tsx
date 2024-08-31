@@ -1,6 +1,6 @@
 "use client";
 import Dropdown from "@/components/ui/dropdown";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 const sortItems = [

@@ -18,6 +18,7 @@ export default function Sizes({
       : [...selectedSizes, size];
 
     const params = new URLSearchParams(searchParams as Record<string, string>);
+    params.delete("page");
     if (newSelectedSizes.length > 0) {
       params.set("size", newSelectedSizes.join(","));
     } else {

@@ -5,4 +5,5 @@ export type navType = {
   url: string;
   subNav?: string[];
   icon?: string;
+  className?: string;
 };
