@@ -55,7 +55,7 @@ export default function Shoes({
               <PriceRange />
             </Suspense>
           </Filters>
-          <div className='col-span-10 h-full overflow-x-hidden overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]'>
+          <div className='col-span-10 h-screen overflow-x-hidden overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]'>
             <Suspense key={Math.random()} fallback={<ProductSkeleton />}>
               <ProductList searchParams={searchParams} />
             </Suspense>

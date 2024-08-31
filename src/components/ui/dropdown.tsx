@@ -39,7 +39,7 @@ export default function Dropdown({
       return `/shoes?${url}`;
     }
     if (pathname === "/shoes") {
-      return `?${url}`;
+      return `?brand=${url}`;
     }
     return url; // Default case if no conditions match
   };
