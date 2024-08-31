@@ -21,7 +21,7 @@ export default function Brands({
   return (
     <div>
       <h6 className='mb-1'>Brand</h6>
-      <div className='grid grid-cols-2'>
+      <div className='grid grid-cols-2 place-items-center md:place-items-start'>
         {BRANDS.map((brand, idx) => (
           <Link
             href={{

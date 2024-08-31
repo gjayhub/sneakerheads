@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
 
-export default function BreadCrumbs({ routes }: { routes?: string }) {
+export default function BreadCrumbs({ brand }: { brand?: string | undefined }) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -25,12 +25,12 @@ export default function BreadCrumbs({ routes }: { routes?: string }) {
             <Link href='/shoes'>Shoes</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        {routes && (
+        {brand && (
           <>
             <BreadcrumbSeparator>/</BreadcrumbSeparator>
             <BreadcrumbItem>
               <p className='pointer-events-none text-gray-500 capitalize'>
-                {routes}
+                {brand}
               </p>
             </BreadcrumbItem>{" "}
           </>

@@ -30,7 +30,7 @@ export default function Sizes({
     <div>
       <h6 className='mb-1'>Size</h6>
       <p className='text-sm'>US</p>
-      <div className='grid grid-cols-3 ml-2 mb-2'>
+      <div className='grid grid-cols-3 ml-2 mb-2 place-items-center md:place-items-start'>
         {sizes.map((size) => (
           <Link
             href={generateUrlWithNewSize(size)}
