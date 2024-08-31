@@ -27,7 +27,7 @@ export const navItems: navType[] = [
   },
   {
     title: "Sale",
-    url: "/shoes/sale",
+    url: "promo=sale",
     icon: "/discount.png",
   },
 ];

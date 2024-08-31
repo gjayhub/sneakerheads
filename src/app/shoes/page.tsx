@@ -11,18 +11,19 @@ import ProductCard from "@/components/ui/product-card";
 import { Filter } from "lucide-react";
 import ProductList from "./ProductList";
 import { getShoes } from "@/utils/actions/getShoes";
+import ProductSkeleton from "@/components/skeleton/ProductSkeleton";
 type brandsType = { slug: string };
-export default async function Shoes({
+export default function Shoes({
   searchParams,
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const headerTitle = searchParams?.brand || "All Shoes";
-  const { data: shoes } = await getShoes({
-    ...searchParams,
-    page: 1,
-    offset: 12,
-  });
+  const headerTitle =
+    searchParams?.brand ||
+    searchParams?.sort ||
+    searchParams?.promo ||
+    "All Shoes";
+
   return (
     <div className='h-auto relative md:px-10 px-2'>
       <Separator className='my-16' orientation='horizontal' />
@@ -32,12 +33,12 @@ export default async function Shoes({
 
         <h6 className='capitalize mt-10'>{headerTitle}</h6>
         <div className='flex justify-between'>
-          <p className='text-gray-400'>20 items</p>
+          <p className='text-gray-400'>{shoes.length}</p>
           <div className='flex gap-6 items-center'>
             <button className='md:hidden flex items-center gap-2 '>
               Filter <Filter className='mt-1' size={17} />
             </button>
-            <Suspense fallback={<p>Loading</p>}>
+            <Suspense key={Math.random()} fallback={<p>Loading</p>}>
               <SortDropdown />
             </Suspense>
           </div>
@@ -50,12 +51,14 @@ export default async function Shoes({
 
             <Sizes searchParams={searchParams} />
             <Separator className='' orientation='horizontal' />
-            <Suspense fallback={<p>Loading</p>}>
+            <Suspense key={Math.random()} fallback={<p>Loading</p>}>
               <PriceRange />
             </Suspense>
           </div>
           <div className='col-span-10 h-full overflow-x-hidden overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]'>
-            <ProductList shoes={shoes} />
+            <Suspense key={Math.random()} fallback={<ProductSkeleton />}>
+              <ProductList searchParams={searchParams} />
+            </Suspense>
           </div>
         </div>
       </div>
