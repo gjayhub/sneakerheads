@@ -29,7 +29,7 @@ export default function PaginationComponent({
           )}
         >
           <ChevronLeft />
-          Previous
+          Prev
         </Link>
 
         <div className='font-semibold'>Page {currentPage}</div>

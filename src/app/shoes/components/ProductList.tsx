@@ -22,7 +22,7 @@ export default async function ProductList({
   return (
     <div>
       {shoes.length === 0 && (
-        <div className='h-screen w-full flex justify-center items-center'>
+        <div className='h-[50vh] w-full flex justify-center items-center'>
           No Shoes Found
         </div>
       )}

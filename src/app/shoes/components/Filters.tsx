@@ -35,7 +35,7 @@ export default function Filters({
 
   return (
     <AnimatePresence>
-      {isSmallScreen && (
+      {isSmallScreen ? (
         <>
           {isFilterOpen && (
             <motion.div
@@ -47,12 +47,11 @@ export default function Filters({
                 transition: { type: "tween", duration: 0.3 },
               }}
               exit={{
-                x: 300,
+                x: -300,
                 opacity: 0,
-                transition: { type: "tween", duration: 0.3 },
               }}
               className={cn(
-                "fixed right-0 p-4 pb-10 shadow-md rounded-bl-[10px] bg-white z-10 flex flex-col ",
+                "absolute right-0 p-4 pb-10 shadow-md rounded-bl-[10px] bg-white z-10 flex flex-col w-[65vw] ",
                 className
               )}
             >
@@ -60,8 +59,9 @@ export default function Filters({
             </motion.div>
           )}
         </>
+      ) : (
+        <div className='border-r hidden md:block col-span-2'>{children}</div>
       )}
-      <div className='border-r hidden md:block col-span-2'>{children}</div>
     </AnimatePresence>
   );
 }

@@ -21,12 +21,12 @@ export default function Shoes({
 
   return (
     <div className='h-auto relative md:px-10 px-2'>
-      <Separator className='my-10' orientation='horizontal' />
+      <Separator className='md:my-10 my-8' orientation='horizontal' />
 
       <div className='max-w-[1400px] mx-auto '>
         <BreadCrumbs brand={brand} />
 
-        <h6 className='capitalize mt-5'>{headerTitle}</h6>
+        <h6 className='capitalize md:mt-5 '>{headerTitle}</h6>
         <div className='flex justify-between'>
           <Suspense
             key={Math.random()}
@@ -43,7 +43,7 @@ export default function Shoes({
           </div>
         </div>
 
-        <div className='h-screen md:grid grid-cols-12 mt-5 '>
+        <div className='h-full md:grid grid-cols-12 mt-5 '>
           <Filters className='col-span-2'>
             <Brands searchParams={searchParams} />
             <Separator className='' orientation='horizontal' />
