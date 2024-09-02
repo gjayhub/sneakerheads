@@ -1,46 +1,68 @@
+"use client";
 import Checkbox from "@/components/ui/CheckBox";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
-
-const sizes = ["6", "7", "8", "8.5", "9", "9.5", "10", "11", "12"];
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import React, { useState } from "react";
 
 export default function Sizes({
-  searchParams,
+  // searchParams,
+  sizes = ["6", "7", "8", "8.5", "9", "9.5", "10", "11", "12"],
+  multiSelect = true,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined };
+  // searchParams?: { [key: string]: string | string[] | undefined };
+  sizes?: string[];
+  multiSelect?: boolean;
 }) {
-  const size = searchParams?.size as string | undefined;
-  const selectedSizes = size ? size.split(",") : [];
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const size = searchParams.get("size");
 
-  const generateUrlWithNewSize = (size: string) => {
+  const [selectedSizes, setSelectedSizes] = useState(
+    size ? size.split(",") : []
+  );
+
+  const params = new URLSearchParams(searchParams.toString());
+
+  const handleSizeChanges = (size: string) => {
+    if (!multiSelect) {
+      return setSelectedSizes([size]);
+    }
     const isSelected = selectedSizes.includes(size);
     const newSelectedSizes = isSelected
       ? selectedSizes.filter((s) => s !== size)
       : [...selectedSizes, size];
-
-    const params = new URLSearchParams(searchParams as Record<string, string>);
+    setSelectedSizes(newSelectedSizes);
     params.delete("page");
     if (newSelectedSizes.length > 0) {
       params.set("size", newSelectedSizes.join(","));
     } else {
       params.delete("size");
     }
-    return `?${params.toString()}`;
+    return router.push(`${pathname}?${params.toString()}`);
   };
 
   return (
     <div>
       <h6 className='mb-1'>Size</h6>
       <p className='text-sm'>US</p>
-      <div className='grid grid-cols-3 ml-2 mb-2 place-items-center md:place-items-start'>
+      <div
+        className={cn(
+          "grid grid-cols-3 ml-2 mb-2 place-items-center md:place-items-start",
+          !multiSelect && "grid-cols-4"
+        )}
+      >
         {sizes.map((size) => (
-          <Link
-            href={generateUrlWithNewSize(size)}
+          <div
+            // href={generateUrlWithNewSize(size)}
+            onClick={() => handleSizeChanges(size)}
             key={size}
             className='col-span-1 w-fit'
           >
             <p className='text-center text-xs text-slate-500'>{size}</p>
             <Checkbox isChecked={selectedSizes.includes(size)} fill={true} />
-          </Link>
+          </div>
         ))}
       </div>
     </div>

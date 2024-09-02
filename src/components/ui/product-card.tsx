@@ -29,7 +29,7 @@ export default function ProductCard({
         {/**/}
         <Image
           className={cn(
-            "object-cover transition-transform hover:scale-105 lg:h-[400px] md:h-[250px] h-[200px]  aspect-square w-full ",
+            "object-cover transition-transform hover:scale-105 lg:h-[350px] md:h-[250px] h-[200px]  aspect-square w-full ",
             imgStyle
           )}
           src={image}

@@ -13,9 +13,9 @@ export default function Button({
   return (
     <button
       className={cn(
-        "[border-radius:3px] px-2",
+        "[border-radius:3px] px-2 box-border",
         type === "primary"
-          ? "bg-black text-white"
+          ? "bg-black text-white border-black border-2 "
           : " border-black border-2    ",
         className
       )}

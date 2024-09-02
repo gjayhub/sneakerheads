@@ -6,6 +6,7 @@ import { ShoeTypes } from "@/utils/types/shoeTypes";
 import React from "react";
 import PaginationComponent from "./Pagination";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 export default async function ProductList({
   searchParams,
@@ -28,7 +29,7 @@ export default async function ProductList({
       )}
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-1 gap-y-8 mx-2'>
         {shoes?.map((shoe: ShoeTypes) => (
-          <div key={shoe.id} className=''>
+          <Link href={`/shoes/${shoe.id}`} key={shoe.id} className=''>
             <ProductCard
               brand={shoe.brand}
               image={shoe.images[0]}
@@ -36,7 +37,7 @@ export default async function ProductList({
               price={shoe.price}
               id={shoe.id}
             />
-          </div>
+          </Link>
         ))}
       </div>
       <Separator className='mt-10 w-[80%] mx-auto' />

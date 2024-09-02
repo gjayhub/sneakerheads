@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`  ${poppins_init.variable} ${leage_gothic_init.variable} `}
+        className={`  ${poppins_init.variable} ${leage_gothic_init.variable} font-poppins`}
       >
         <Navigation />
         {children}

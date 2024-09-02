@@ -20,6 +20,7 @@ const config = {
     extend: {
       fontFamily: {
         "leage-gothic": "var(--font-leage-gothic)",
+        poppins: "var(--font-poppins)",
       },
       fontSize: {
         header: "clamp(5rem, 17vw, 17rem); ",

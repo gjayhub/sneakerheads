@@ -48,7 +48,7 @@ export default function Shoes({
             <Brands searchParams={searchParams} />
             <Separator className='' orientation='horizontal' />
 
-            <Sizes searchParams={searchParams} />
+            <Sizes />
 
             <Separator className='' orientation='horizontal' />
             <Suspense key={Math.random()} fallback={<p>Loading</p>}>
