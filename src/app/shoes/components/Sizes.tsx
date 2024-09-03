@@ -1,6 +1,7 @@
 "use client";
 import Checkbox from "@/components/ui/CheckBox";
 import { cn } from "@/lib/utils";
+import { useShoes } from "@/utils/store/useShoes";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
@@ -18,6 +19,7 @@ export default function Sizes({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const size = searchParams.get("size");
+  const { setSelectedSize } = useShoes();
 
   const [selectedSizes, setSelectedSizes] = useState(
     size ? size.split(",") : []
@@ -27,7 +29,9 @@ export default function Sizes({
 
   const handleSizeChanges = (size: string) => {
     if (!multiSelect) {
-      return setSelectedSizes([size]);
+      setSelectedSizes([size]);
+      setSelectedSize(size);
+      return;
     }
     const isSelected = selectedSizes.includes(size);
     const newSelectedSizes = isSelected

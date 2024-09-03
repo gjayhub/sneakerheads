@@ -7,6 +7,7 @@ import { navType } from "@/utils/types/navTypes";
 import { NavigationMenu, NavigationMenuList } from "./ui/navigation-menu";
 
 import MobileNav from "./ui/mobile-nav";
+import Cart from "./ui/cart";
 
 export const navItems: navType[] = [
   {
@@ -64,7 +65,7 @@ export default function Navigation() {
             <div className='flex gap-8'>
               <Search />
               <Heart />
-              <ShoppingBag />
+              <Cart />
             </div>
           </nav>
         </motion.header>

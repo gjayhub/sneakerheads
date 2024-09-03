@@ -35,13 +35,11 @@ export default function Dropdown({
   const { setIsMobileNavOpen } = useMobileNav();
 
   const determineHref = (url: string) => {
-    if (pathname === "/") {
+    if (pathname === "/shoes") {
+      return `?${url}`;
+    } else {
       return `/shoes?${url}`;
     }
-    if (pathname === "/shoes") {
-      return `?brand=${url}`;
-    }
-    return url; // Default case if no conditions match
   };
   const listVariants = {
     hidden: { height: 0, opacity: 0 },

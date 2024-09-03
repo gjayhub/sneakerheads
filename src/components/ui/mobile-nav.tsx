@@ -39,13 +39,11 @@ export default function MobileNav() {
   };
   const pathname = usePathname();
   const determineHref = (url: string) => {
-    if (pathname === "/") {
-      return `/shoes?${url}`;
-    }
     if (pathname === "/shoes") {
       return `?${url}`;
+    } else {
+      return `/shoes?${url}`;
     }
-    return url; // Default case if no conditions match
   };
 
   return (

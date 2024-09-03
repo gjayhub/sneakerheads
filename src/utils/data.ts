@@ -599,3 +599,58 @@ export const shoes = [
     id: 36,
   },
 ];
+
+export const cartData = [
+  {
+    name: "Wayvee Leather",
+    price: 4999.0,
+    size: "7",
+    brand: "Vans",
+
+    image: "/shoes/Vans/Wayvee-Leather/0.webp",
+
+    id: 1,
+    quantity: 1,
+  },
+  {
+    name: "Chukka Push",
+    price: 4599.0,
+    quantity: 1,
+    size: "9",
+    brand: "Vans",
+    image: "/shoes/Vans/Chukka-Push/0.webp",
+    id: 2,
+  },
+  {
+    name: "Knu Skool",
+    price: 4999.0,
+    size: "11",
+    brand: "Vans",
+
+    image: "/shoes/Vans/Knu-Skool/0.webp",
+
+    id: 3,
+    quantity: 1,
+  },
+  {
+    name: "Sport Low",
+    price: 4399.0,
+    size: "8.5",
+    brand: "Vans",
+
+    image: "/shoes/Vans/Sport-Low/0.webp",
+
+    id: 4,
+    quantity: 1,
+  },
+  {
+    name: "Authentic",
+    price: 3999.0,
+    size: "9",
+    brand: "Vans",
+
+    image: "/shoes/Vans/Authentic/0.webp",
+    quantity: 1,
+    id: 5,
+  },
+];

@@ -1,4 +1,6 @@
 "use client";
+import AddToFavorite from "@/components/ui/add-to-favorite";
+import { Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,7 +21,7 @@ export default function ShoeImages({
   // lg:col-span-1 h-fit lg:max-h-[50vh] lg:order-1 order-2 flex justify-center  items-center lg:flex-col gap-1
   return (
     <div className='  w-full'>
-      <div className='col-span-5 w-full'>
+      <div className='col-span-5 w-full relative'>
         <Image
           className='w-full object-cover max-h-[60vh]'
           src={previewImage}
@@ -27,6 +29,7 @@ export default function ShoeImages({
           height={500}
           width={500}
         />
+        <AddToFavorite />
       </div>
       <div className='  flex gap-1 mt-2 '>
         {images?.map((img, idx) => (

@@ -35,13 +35,11 @@ export default function NavItem({ nav }: { nav: navType }) {
   }, []);
 
   const determineHref = (url: string) => {
-    if (pathname === "/") {
-      return `/shoes?${url}`;
-    }
     if (pathname === "/shoes") {
       return `?${url}`;
+    } else {
+      return `/shoes?${url}`;
     }
-    return url; // Default case if no conditions match
   };
 
   return (
@@ -69,13 +67,11 @@ export default function NavItem({ nav }: { nav: navType }) {
 const SubMenu = ({ submenu }: { submenu: string[] | undefined }) => {
   const pathname = usePathname();
   const determineHref = (url: string) => {
-    if (pathname === "/") {
-      return `/shoes?brand=${url}`;
-    }
     if (pathname === "/shoes") {
-      return `?brand=${url}`;
+      return `?${url}`;
+    } else {
+      return `/shoes?${url}`;
     }
-    return url; // Default case if no conditions match
   };
   return (
     <NavigationMenuContent className='px-2 bg-white pb-2 flex flex-col justify-center'>

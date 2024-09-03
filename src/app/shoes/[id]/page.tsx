@@ -4,6 +4,7 @@ import ShoeImages from "./components/ShoeImages";
 import Sizes from "../components/Sizes";
 import Button from "@/components/ui/button";
 import SimilarShoes from "./components/SimilarShoes";
+import AddToCart from "@/components/ui/add-to-cart";
 
 export default async function ShoeDetails({
   params,
@@ -37,18 +38,13 @@ export default async function ShoeDetails({
             </div>
             <div className='grid grid-cols-2 gap-8 w-[90%] mt-8'>
               <Button
-                className='col-span-1 text-sm lg:text-base '
+                className='col-span-1 p-2 text-sm lg:text-base '
                 type='primary'
               >
                 BUY
               </Button>
 
-              <Button
-                className='col-span-1  text-sm lg:text-base'
-                type='secondary'
-              >
-                ADD TO CART
-              </Button>
+              <AddToCart shoeDetails={shoeDetails} />
             </div>
           </div>
         </div>
