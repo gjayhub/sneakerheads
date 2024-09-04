@@ -5,7 +5,7 @@ import FavoritesList from "./components/FavoritesList";
 
 export default function FavoritesPage() {
   return (
-    <div className='max-w-[1300px] mx-auto'>
+    <div className='max-w-[1300px] mx-auto overflow-hidden'>
       <div className='relative w-fit max-w-[85vw]  mx-auto'>
         <Image
           className='absolute right-[-40%] -z-20 -rotate-45'
