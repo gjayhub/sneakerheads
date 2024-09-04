@@ -1,5 +1,5 @@
 import React from "react";
-import { FeaturesSectionDemo } from "./blocks/features-section-demo-1";
+
 import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
 import Image from "next/image";
 import { cn } from "@/lib/utils";

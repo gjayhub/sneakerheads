@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { useShoes } from "@/utils/store/useShoes";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Sizes({
   // searchParams,
@@ -19,27 +19,26 @@ export default function Sizes({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const size = searchParams.get("size");
-  const { setSelectedSize } = useShoes();
-
-  const [selectedSizes, setSelectedSizes] = useState(
-    size ? size.split(",") : []
-  );
+  const { selectedSize, setSelectedSize } = useShoes();
+  useEffect(() => {
+    setSelectedSize(size ? size.split(",") : []);
+  }, []);
 
   const params = new URLSearchParams(searchParams.toString());
 
   const handleSizeChanges = (size: string) => {
     if (!multiSelect) {
-      setSelectedSizes([size]);
-      setSelectedSize(size);
+      setSelectedSize([size]);
+
       return;
     }
-    const isSelected = selectedSizes.includes(size);
+    const isSelected = selectedSize?.includes(size);
     const newSelectedSizes = isSelected
-      ? selectedSizes.filter((s) => s !== size)
-      : [...selectedSizes, size];
-    setSelectedSizes(newSelectedSizes);
+      ? selectedSize?.filter((s) => s !== size)
+      : [...(selectedSize ?? []), size];
+    setSelectedSize(newSelectedSizes ?? []);
     params.delete("page");
-    if (newSelectedSizes.length > 0) {
+    if (newSelectedSizes) {
       params.set("size", newSelectedSizes.join(","));
     } else {
       params.delete("size");
@@ -65,7 +64,7 @@ export default function Sizes({
             className='col-span-1 w-fit'
           >
             <p className='text-center text-xs text-slate-500'>{size}</p>
-            <Checkbox isChecked={selectedSizes.includes(size)} fill={true} />
+            <Checkbox isChecked={selectedSize?.includes(size)} fill={true} />
           </div>
         ))}
       </div>

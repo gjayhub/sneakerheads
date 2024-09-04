@@ -8,35 +8,38 @@ import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
 export default function AddToCart({ shoeDetails }: { shoeDetails: ShoeTypes }) {
-  const { selectedSize } = useShoes();
+  const { selectedSize, setSelectedSize } = useShoes();
   const { addCart } = useCart();
   const { toast } = useToast();
 
   const handleAddToCart = () => {
-    const addCartData = {
-      name: shoeDetails?.name,
-      quantity: 1,
-      size: selectedSize,
-      brand: shoeDetails?.brand,
-      image: shoeDetails?.images[0],
-      id: shoeDetails?.id + Number(selectedSize),
-      price: shoeDetails?.price,
-    };
+    if (selectedSize?.length !== 0) {
+      const addCartData = {
+        name: shoeDetails?.name,
+        quantity: 1,
+        size: selectedSize ?? [],
+        brand: shoeDetails?.brand,
+        image: shoeDetails?.images[0],
+        id: shoeDetails?.id,
+        price: shoeDetails?.price,
+        selected: false,
+      };
 
-    addCart(addCartData);
-    toast({
-      title: `${shoeDetails.name} is Added to the cart`,
-      description: `Size: ${selectedSize}`,
-      className: "bg-white z-50",
-    });
+      addCart(addCartData);
+      toast({
+        title: `${shoeDetails.name} is Added to the cart`,
+        description: `Size: ${selectedSize}`,
+        className: "bg-green-200 z-50",
+      });
+      setSelectedSize([]);
+    }
   };
   return (
     <Button
       onClick={() => handleAddToCart()}
-      aria-disabled={!selectedSize}
       className={cn(
         "col-span-1 p-2  text-sm lg:text-base",
-        !selectedSize && "cursor-not-allowed pointer-events-none"
+        selectedSize?.length == 0 && "cursor-not-allowed "
       )}
       type='secondary'
     >

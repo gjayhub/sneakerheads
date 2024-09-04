@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { useFilter } from "@/utils/store/useMobileNav";
+
 import { AnimatePresence, motion } from "framer-motion";
 import useMediaQuery from "@/utils/hooks/useMediaQuery";
+import { useFilter } from "@/utils/store/useNav";
 
 export default function Filters({
   children,
@@ -12,7 +13,7 @@ export default function Filters({
   children: React.ReactNode;
   className: string;
 }>) {
-  const { isFilterOpen, setIsFilterOpen } = useFilter();
+  const { isOpen: isFilterOpen, setIsOpen: setIsFilterOpen } = useFilter();
   const filterRef = useRef<HTMLDivElement>(null);
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
   useEffect(() => {

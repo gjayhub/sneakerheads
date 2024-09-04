@@ -1,26 +1,19 @@
 import { create } from "zustand";
 import { ShoeTypes } from "../types/shoeTypes";
-import { cartData } from "../data";
+import { cartData, favoritesData, shoes } from "../data";
 
 type useShoesType = {
-  favorites: ShoeTypes[];
-  addFavorite: (shoe: ShoeTypes) => void;
   selectedShoe: ShoeTypes | null;
-  selectedSize: string | null;
-  setSelectedSize: (size: string) => void;
+  selectedSize: string[] | null;
+  setSelectedSize: (size: string[]) => void;
 };
 
 export const useShoes = create<useShoesType>()((set) => ({
-  favorites: [],
   selectedShoe: null,
   selectedSize: null,
   setSelectedSize: (size) => {
     set({ selectedSize: size });
   },
-  addFavorite: (shoe) =>
-    set((state) => ({
-      favorites: [...state.favorites, shoe],
-    })),
 }));
 
 export type cartType = {
@@ -29,25 +22,72 @@ export type cartType = {
   quantity: number;
   id: number;
   brand: string;
-  size: string | null;
+  size?: string[];
   price: number;
+  selected: boolean;
 };
+export type favoritesType = {
+  name: string;
+  price: number;
 
+  brand: string;
+  image: string;
+  id: number;
+};
+type useFavoriteType = {
+  favorites: favoritesType[];
+  addFavorite: (id: number) => void;
+  isFavorite: (id: number) => boolean;
+};
 type useCartType = {
   cart: cartType[];
   addCart: (newShoe: cartType) => void;
   setCart: (cart: cartType[] | ((prevCart: cartType[]) => cartType[])) => void;
 };
 
+export const useFavorite = create<useFavoriteType>()((set, get) => ({
+  favorites: favoritesData,
+  isFavorite: (id: number) => {
+    const { favorites } = get();
+    const isAlreadyInFavorite = favorites.some((shoe) => shoe.id === id);
+    return isAlreadyInFavorite;
+  },
+  addFavorite: (id: number) => {
+    const { favorites } = get();
+
+    const isAlreadyInFavorite = favorites.some((shoe) => shoe.id === id);
+
+    if (!isAlreadyInFavorite) {
+      const newFavInfo = shoes.find((shoe) => shoe.id === id);
+      if (newFavInfo) {
+        const newFavoriteData = {
+          name: newFavInfo?.name,
+          price: newFavInfo?.price,
+
+          brand: newFavInfo?.brand,
+          image: newFavInfo?.images[0],
+          id: newFavInfo?.id,
+        };
+        set({ favorites: [...favorites, newFavoriteData] });
+      }
+    } else {
+      const updatedFavorite = favorites.filter((shoe) => shoe.id !== id);
+      set({ favorites: updatedFavorite });
+    }
+  },
+}));
+
 export const useCart = create<useCartType>((set, get) => ({
-  cart: cartData,
+  cart: cartData.map((shoe) => ({ ...shoe, selected: false })),
   setCart: (newCart) =>
     set((state) => ({
       cart: typeof newCart === "function" ? newCart(state.cart) : newCart,
     })),
   addCart: (newShoe: cartType) => {
     const { cart } = get();
-    const isAlreadyInCart = cart.some((shoe) => shoe.id === newShoe.id);
+    const isAlreadyInCart = cart.some(
+      (shoe) => shoe.id === newShoe.id && shoe.size === newShoe.size
+    );
 
     let updatedShoe: cartType[];
 

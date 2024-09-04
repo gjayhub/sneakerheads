@@ -29,15 +29,14 @@ export default async function ProductList({
       )}
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-1 gap-y-8 mx-2'>
         {shoes?.map((shoe: ShoeTypes) => (
-          <Link href={`/shoes/${shoe.id}`} key={shoe.id} className=''>
-            <ProductCard
-              brand={shoe.brand}
-              image={shoe.images[0]}
-              name={shoe.name}
-              price={shoe.price}
-              id={shoe.id}
-            />
-          </Link>
+          <ProductCard
+            key={shoe.id}
+            brand={shoe.brand}
+            image={shoe.images[0]}
+            name={shoe.name}
+            price={shoe.price}
+            id={shoe.id}
+          />
         ))}
       </div>
       <Separator className='mt-10 w-[80%] mx-auto' />

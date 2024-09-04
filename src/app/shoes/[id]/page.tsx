@@ -5,6 +5,7 @@ import Sizes from "../components/Sizes";
 import Button from "@/components/ui/button";
 import SimilarShoes from "./components/SimilarShoes";
 import AddToCart from "@/components/ui/add-to-cart";
+import AddToFavorite from "@/components/ui/add-to-favorite";
 
 export default async function ShoeDetails({
   params,
@@ -20,7 +21,9 @@ export default async function ShoeDetails({
       <div className='max-w-[1300px] mx-auto overflow-hidden'>
         <div className='md:flex w-full mx-2 gap-8'>
           <div className='flex-1 '>
-            <ShoeImages images={shoeDetails?.images} />
+            <ShoeImages images={shoeDetails?.images}>
+              <AddToFavorite id={shoeDetails.id} />
+            </ShoeImages>
           </div>
 
           <div className='flex-1 flex flex-col justify-center '>

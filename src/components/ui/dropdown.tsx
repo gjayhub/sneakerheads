@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname, useSearchParams } from "next/navigation";
-
-import { useMobileNav } from "@/utils/store/useMobileNav";
+import { useMobileNav } from "@/utils/store/useNav";
 
 type subNavType = {
   title: string;
@@ -32,13 +31,13 @@ export default function Dropdown({
 }: DropdownProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const { setIsMobileNavOpen } = useMobileNav();
+  const { setIsOpen: setIsMobileNavOpen } = useMobileNav();
 
   const determineHref = (url: string) => {
     if (pathname === "/shoes") {
-      return `?${url}`;
+      return `?brand=${url}`;
     } else {
-      return `/shoes?${url}`;
+      return `/shoes?brand=${url}`;
     }
   };
   const listVariants = {

@@ -1,10 +1,11 @@
 "use client";
-import { useFilter } from "@/utils/store/useMobileNav";
+
+import { useFilter } from "@/utils/store/useNav";
 import { Filter } from "lucide-react";
 import React from "react";
 
 export default function FilterToggle() {
-  const { isFilterOpen, setIsFilterOpen } = useFilter();
+  const { isOpen: isFilterOpen, setIsOpen: setIsFilterOpen } = useFilter();
   return (
     <button
       onClick={() => setIsFilterOpen(!isFilterOpen)}

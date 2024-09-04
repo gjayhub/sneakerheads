@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
+import AddToFavorite from "./add-to-favorite";
+import Link from "next/link";
 type ProductCardType = {
   name: string;
   image: string;
@@ -22,30 +24,35 @@ export default function ProductCard({
   imgStyle,
 }: ProductCardType) {
   return (
-    <div className={cn("w-full", cardContainer)}>
-      <div
-        className={cn("relative [&>p]:hover:bottom-2 ", imageContainerStyle)}
-      >
-        {/**/}
-        <Image
+    <div className={cn("w-full relative", cardContainer)}>
+      <Link href={`/shoes/${id}`}>
+        <div
           className={cn(
-            "object-cover transition-transform hover:scale-105 lg:h-[350px] md:h-[250px] h-[200px]  aspect-square w-full ",
-            imgStyle
+            "relative [&>p]:hover:bottom-2 [&>div]:hover:scale-105",
+            imageContainerStyle
           )}
-          src={image}
-          alt={name}
-          width={300}
-          height={300}
-        />
-        <p className='absolute bottom-1 left-1  transition-all bg-white rounded-[5px] px-2'>
-          ₱ : <span className='text-sm '>{price}</span>
-        </p>
-      </div>
+        >
+          <Image
+            className={cn(
+              "object-cover transition-transform hover:scale-105 lg:h-[350px] md:h-[250px] h-[200px]  aspect-square w-full ",
+              imgStyle
+            )}
+            src={image}
+            alt={name}
+            width={300}
+            height={300}
+          />
 
-      <h6 className='text-lg font-bold text-neutral-600 text-wrap w-'>
-        {name}
-      </h6>
-      <p>{brand}</p>
+          <p className='absolute bottom-1 left-1  transition-all bg-white rounded-[5px] px-2'>
+            ₱ : <span className='text-sm '>{price}</span>
+          </p>
+        </div>
+
+        <h6 className='text-lg font-bold text-neutral-600 text-wrap w-'>
+          {name}
+        </h6>
+        <p>{brand}</p>
+      </Link>
     </div>
   );
 }

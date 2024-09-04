@@ -8,6 +8,8 @@ import { NavigationMenu, NavigationMenuList } from "./ui/navigation-menu";
 
 import MobileNav from "./ui/mobile-nav";
 import Cart from "./ui/cart";
+import AddToFavorite from "./ui/add-to-favorite";
+import Link from "next/link";
 
 export const navItems: navType[] = [
   {
@@ -62,9 +64,12 @@ export default function Navigation() {
                 </NavigationMenu>
               ))}
             </ul>
-            <div className='flex gap-8'>
+            <div className='flex gap-8 items-center'>
               <Search />
-              <Heart />
+              <Link href='/favorites'>
+                <Heart />
+              </Link>
+
               <Cart />
             </div>
           </nav>

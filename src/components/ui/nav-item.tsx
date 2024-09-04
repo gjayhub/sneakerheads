@@ -68,9 +68,9 @@ const SubMenu = ({ submenu }: { submenu: string[] | undefined }) => {
   const pathname = usePathname();
   const determineHref = (url: string) => {
     if (pathname === "/shoes") {
-      return `?${url}`;
+      return `?brand=${url}`;
     } else {
-      return `/shoes?${url}`;
+      return `/shoes?brand=${url}`;
     }
   };
   return (

@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "./useDebounce";
-import { useMobileNav } from "../store/useMobileNav";
+import { useMobileNav } from "../store/useNav";
 
 export const useHideOnScrollDown = () => {
   const [isVisible, setIsVisible] = useState(true);
-  const { setIsMobileNavOpen } = useMobileNav();
-  const [isOpen, setIsOpen] = useState(false);
+  const { setIsOpen } = useMobileNav();
+
   const [scrollY, setScrollY] = useState(0);
   const dbScrollY = useDebounce(scrollY, 50);
 
@@ -14,7 +14,7 @@ export const useHideOnScrollDown = () => {
 
     setIsVisible(dbScrollY > cur || cur < 10);
     setScrollY(cur);
-    setIsMobileNavOpen(false);
+    setIsOpen(false);
   }, [dbScrollY]);
 
   useEffect(() => {
@@ -22,5 +22,5 @@ export const useHideOnScrollDown = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  return { isVisible, isOpen, setIsOpen };
+  return { isVisible };
 };

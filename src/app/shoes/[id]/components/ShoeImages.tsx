@@ -4,12 +4,16 @@ import { Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 
 export default function ShoeImages({
   images,
+
+  children,
 }: {
   images: string[] | undefined;
+
+  children: ReactNode;
 }) {
   const firstImage = images ? images[0] : "";
   const [previewImage, setPreviewImage] = useState(firstImage);
@@ -18,7 +22,7 @@ export default function ShoeImages({
     const newImage = images ? images[idx] : "";
     setPreviewImage(newImage);
   };
-  // lg:col-span-1 h-fit lg:max-h-[50vh] lg:order-1 order-2 flex justify-center  items-center lg:flex-col gap-1
+
   return (
     <div className='  w-full'>
       <div className='col-span-5 w-full relative'>
@@ -29,17 +33,18 @@ export default function ShoeImages({
           height={500}
           width={500}
         />
-        <AddToFavorite />
+        {children}
       </div>
       <div className='  flex gap-1 mt-2 '>
         {images?.map((img, idx) => (
           <div
             key={idx}
-            className='w-full'
+            className='w-full cursor-pointer'
+            onMouseEnter={() => handleChangeImage(idx)}
             onClick={() => handleChangeImage(idx)}
           >
             <Image
-              className='h-auto w-full'
+              className='h-auto w-full hover:scale-105'
               src={img}
               height={100}
               width={120}
