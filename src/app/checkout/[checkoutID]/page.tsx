@@ -48,19 +48,18 @@ export default function CheckOutPage({
   );
 
   return (
-    <div className='h-screen p-6'>
+    <div className=' p-6'>
       <h1 className='text-2xl font-bold mb-4 mt-16 text-center'>
         Order Details
       </h1>
 
       <div className='max-w-4xl mx-auto bg-white p-8 shadow-lg rounded-lg'>
-        <div className='flex gap-4 '>
-          <div className='mb-6 flex-1'>
-            <div>
-              <h2 className='text-xl font-semibold mb-2'>Items</h2>
-            </div>
-
+        <div className='flex gap-4 flex-col md:flex-row'>
+          <div className='mb-6 flex-1 '>
             <ul className=''>
+              <div>
+                <h2 className='text-xl font-semibold mb-2'>Items</h2>
+              </div>
               {orderItem.map((item, index) => (
                 <li
                   key={item.shoeID}
