@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MenuButton } from "./mobile-menu";
 import { useHideOnScrollDown } from "@/utils/hooks/useHideOnScroll";
 import { navItems } from "../Navigation";
@@ -35,13 +35,19 @@ const userNav = [
 export default function MobileNav() {
   const { isOpen: isMobileNavOpen, setIsOpen: setIsMobileNavOpen } =
     useMobileNav();
+  const navRef = useRef<HTMLDivElement>(null);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const handleMenuButton = () => {
-    setIsMobileNavOpen(!isMobileNavOpen);
+    if (navRef.current) {
+      setIsMobileNavOpen(false);
+    } else {
+      setIsMobileNavOpen(true);
+    }
     setIsDetailsOpen(false);
   };
-  const navRef = useRef<HTMLDivElement>(null);
+
   useOutsideClick(navRef, () => setIsMobileNavOpen(false));
+
   const pathname = usePathname();
   const determineHref = (url: string) => {
     if (pathname === "/shoes") {
@@ -54,6 +60,7 @@ export default function MobileNav() {
   return (
     <>
       <MenuButton isOpen={isMobileNavOpen} onClick={handleMenuButton} />
+
       <AnimatePresence>
         {isMobileNavOpen && (
           <motion.div

@@ -6,6 +6,7 @@ import Button from "@/components/ui/button";
 import SimilarShoes from "./components/SimilarShoes";
 import AddToCart from "@/components/ui/add-to-cart";
 import AddToFavorite from "@/components/ui/add-to-favorite";
+import Link from "next/link";
 
 export default async function ShoeDetails({
   params,
@@ -44,7 +45,7 @@ export default async function ShoeDetails({
                 className='col-span-1 p-2 text-sm lg:text-base '
                 type='primary'
               >
-                BUY
+                <Link href={`/checkout/${shoeDetails.id}`}>BUY </Link>
               </Button>
 
               <AddToCart shoeDetails={shoeDetails} />

@@ -1,8 +1,5 @@
 import React from "react";
-import ParallaxHero from "./ui/parallax-hero";
-import Image from "next/image";
-import Button from "./ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+
 import Carousel from "./ui/carousel";
 import CarouselArrow from "./ui/carousel-arrow";
 import CarouselIndicators from "./ui/carousel-indicators";

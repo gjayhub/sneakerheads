@@ -20,7 +20,8 @@ export default function AddToCart({ shoeDetails }: { shoeDetails: ShoeTypes }) {
         size: selectedSize ?? [],
         brand: shoeDetails?.brand,
         image: shoeDetails?.images[0],
-        id: shoeDetails?.id,
+        id: crypto.randomUUID(),
+        shoeID: shoeDetails?.id,
         price: shoeDetails?.price,
         selected: false,
       };

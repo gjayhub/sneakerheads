@@ -20,7 +20,8 @@ export type cartType = {
   name: string;
   image: string;
   quantity: number;
-  id: number;
+  id: string;
+  shoeID: number;
   brand: string;
   size?: string[];
   price: number;
@@ -78,7 +79,12 @@ export const useFavorite = create<useFavoriteType>()((set, get) => ({
 }));
 
 export const useCart = create<useCartType>((set, get) => ({
-  cart: cartData.map((shoe) => ({ ...shoe, selected: false })),
+  cart: cartData.map((shoe) => ({
+    ...shoe,
+    selected: false,
+    id: crypto.randomUUID(),
+    shoeID: shoe.id,
+  })),
   setCart: (newCart) =>
     set((state) => ({
       cart: typeof newCart === "function" ? newCart(state.cart) : newCart,
@@ -101,4 +107,31 @@ export const useCart = create<useCartType>((set, get) => ({
 
     set({ cart: updatedShoe });
   },
+}));
+
+export type orderItemType = {
+  name: string;
+  image: string;
+  quantity: number;
+  shoeID: number;
+  brand: string;
+  size?: string[];
+  price: number;
+  selected: boolean;
+};
+type orderType = {
+  orderId: string;
+  orderItem: orderItemType[];
+};
+type useOrderType = {
+  order: orderType[];
+  addOrder: (newOrder: orderType) => void;
+};
+
+export const useOrder = create<useOrderType>((set) => ({
+  order: [],
+  addOrder: (newOrder: orderType) =>
+    set((state) => ({
+      order: [...state.order, newOrder], // Add the new order to the array
+    })),
 }));

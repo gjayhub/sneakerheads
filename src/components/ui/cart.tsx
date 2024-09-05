@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "@/utils/store/useShoes";
+import { useCart, useOrder } from "@/utils/store/useShoes";
 import { ShoeTypes } from "@/utils/types/shoeTypes";
 import { AnimatePresence, motion } from "framer-motion";
 import { ShoppingBag, Trash } from "lucide-react";
@@ -11,24 +11,27 @@ import Checkbox from "./CheckBox";
 import Link from "next/link";
 import { useCartToggle } from "@/utils/store/useNav";
 import { useOutsideClick } from "@/utils/hooks/useOutsideClick";
+import { useRouter } from "next/navigation";
 
 interface Shoe {
-  id: number;
+  id: string;
   name: string;
   price: number;
   quantity: number;
   image: string;
   brand: string;
+  shoeID: number;
   size?: string[];
   selected: boolean;
 }
 
 interface CartItemProps {
   shoe: Shoe;
-  onIncrease: (id: number) => void;
-  onDecrease: (id: number) => void;
-  onSelectItem: (id: number) => void;
-  onDeleteItem: (id: number) => void;
+  onIncrease: (id: string) => void;
+  onDecrease: (id: string) => void;
+  onSelectItem: (id: string) => void;
+  onDeleteItem: (id: string) => void;
+  isCartIsOpen: (isOpen: boolean) => void;
   isDeleteOpen: boolean;
 }
 
@@ -39,6 +42,7 @@ function CartItem({
   onSelectItem,
   onDeleteItem,
   isDeleteOpen,
+  isCartIsOpen,
 }: CartItemProps) {
   return (
     <motion.li
@@ -57,7 +61,8 @@ function CartItem({
         />
       </div>
       <Link
-        href={`/shoes/${shoe.id}`}
+        onClick={() => isCartIsOpen(false)}
+        href={`/shoes/${shoe.shoeID}`}
         className='flex justify-between items-center '
       >
         <div className='flex flex-col gap-1'>
@@ -111,12 +116,14 @@ function CartItem({
 
 export default function Cart() {
   const { isOpen: isCartOpen, setIsOpen: setIsCartOpen } = useCartToggle();
+  const { order, addOrder } = useOrder();
   const { cart, setCart } = useCart();
   const [deleteButton, setDeleteButton] = useState(false);
   const cartRef = useRef<HTMLDivElement>(null);
   useOutsideClick(cartRef, () => setIsCartOpen(false));
+  const router = useRouter();
 
-  const increaseQuantity = (id: number) => {
+  const increaseQuantity = (id: string) => {
     setCart((prevCart) =>
       prevCart.map((shoe) =>
         shoe.id === id ? { ...shoe, quantity: shoe.quantity + 1 } : shoe
@@ -124,7 +131,7 @@ export default function Cart() {
     );
   };
 
-  const decreaseQuantity = (id: number) => {
+  const decreaseQuantity = (id: string) => {
     setCart((prevCart) =>
       prevCart.map((shoe) =>
         shoe.id === id && shoe.quantity > 1
@@ -133,7 +140,7 @@ export default function Cart() {
       )
     );
   };
-  const selectItem = (id: number) => {
+  const selectItem = (id: string) => {
     setCart((prevCart) =>
       prevCart.map((shoe) =>
         shoe.id === id ? { ...shoe, selected: !shoe.selected } : shoe
@@ -149,10 +156,22 @@ export default function Cart() {
   const toggleEdit = () => {
     setDeleteButton((prev) => !prev);
   };
-  const handleDeleteItem = (id: number) => {
+  const handleDeleteItem = (id: string) => {
     setCart((prevCart) => prevCart.filter((cart) => cart.id !== id));
   };
 
+  const handleCheckout = () => {
+    const checkoutItems = cart
+      .filter((shoe) => shoe.selected)
+      .map(({ id, ...rest }) => rest);
+    const newOrder = {
+      orderId: crypto.randomUUID(),
+      orderItem: checkoutItems,
+    };
+    addOrder(newOrder);
+    setIsCartOpen(false);
+    router.push(`/checkout/${newOrder.orderId}`);
+  };
   return (
     <div className='relative'>
       <div className='relative  '>
@@ -192,6 +211,7 @@ export default function Cart() {
                     onSelectItem={selectItem}
                     onDeleteItem={handleDeleteItem}
                     isDeleteOpen={deleteButton}
+                    isCartIsOpen={setIsCartOpen}
                   />
                 ))}
               </motion.ul>
@@ -206,7 +226,11 @@ export default function Cart() {
               <span> ₱: {totalPrice.toFixed(2)}</span>
             </div>
 
-            <Button type='primary' className='w-full p-2'>
+            <Button
+              onClick={handleCheckout}
+              type='primary'
+              className='w-full p-2'
+            >
               Check Out
             </Button>
           </motion.div>
