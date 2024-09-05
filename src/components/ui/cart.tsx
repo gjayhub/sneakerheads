@@ -5,11 +5,12 @@ import { ShoeTypes } from "@/utils/types/shoeTypes";
 import { AnimatePresence, motion } from "framer-motion";
 import { ShoppingBag, Trash } from "lucide-react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Button from "./button";
 import Checkbox from "./CheckBox";
 import Link from "next/link";
 import { useCartToggle } from "@/utils/store/useNav";
+import { useOutsideClick } from "@/utils/hooks/useOutsideClick";
 
 interface Shoe {
   id: number;
@@ -44,7 +45,7 @@ function CartItem({
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
-      className='p-2 border-b grid grid-cols-[120px_1fr_30px_50px] justify-between items-center gap-4'
+      className='p-2 border-b grid grid-cols-[auto_1fr_auto_auto] justify-between items-center gap-4'
     >
       <div className=''>
         <Image
@@ -57,20 +58,26 @@ function CartItem({
       </div>
       <Link
         href={`/shoes/${shoe.id}`}
-        className='flex justify-around items-center '
+        className='flex justify-between items-center '
       >
-        <div>
-          <h6> {shoe.name}</h6>
-          <p>{shoe.brand}</p>
-          <p> ₱:{shoe.price}</p>
-          <p>
-            Size: <span>{shoe.size}</span>
-          </p>
+        <div className='flex flex-col gap-1'>
+          <div>
+            <h6 className='text-sm md:text-lg lg:text-xl'> {shoe.name}</h6>
+            <p className='text-xs  md:text-md lg:text-lg'>{shoe.brand}</p>
+          </div>
+          <div className='mt-2'>
+            <p className='text-xs  md:text-md lg:text-lg opacity-80'>
+              ₱:{shoe.price}
+            </p>
+            <p className='text-xs  md:text-md lg:text-lg opacity-80'>
+              Size: <span>{shoe.size}</span>
+            </p>
+          </div>
         </div>
-
-        <div>{shoe.quantity}</div>
+        <div className='mr-4'>{shoe.quantity}</div>
       </Link>
-      <div className='flex items-center flex-col justify-center gap-2'>
+
+      <div className='flex gap-2 flex-col md:flex-row justify-center items-center'>
         <Button
           type='secondary'
           onClick={() => onDecrease(shoe.id)}
@@ -91,14 +98,13 @@ function CartItem({
           <Trash size={30} />
         </button>
       ) : (
-        <button className='mx-auto' onClick={() => onSelectItem(shoe.id)}>
-          <Checkbox
-            isChecked={shoe.selected}
-            fill={true}
-            className='border-slate-400'
-          />
-        </button>
-      )}{" "}
+        <Checkbox
+          onClick={() => onSelectItem(shoe.id)}
+          isChecked={shoe.selected}
+          fill={true}
+          className='border-slate-400 mx-auto'
+        />
+      )}
     </motion.li>
   );
 }
@@ -107,6 +113,8 @@ export default function Cart() {
   const { isOpen: isCartOpen, setIsOpen: setIsCartOpen } = useCartToggle();
   const { cart, setCart } = useCart();
   const [deleteButton, setDeleteButton] = useState(false);
+  const cartRef = useRef<HTMLDivElement>(null);
+  useOutsideClick(cartRef, () => setIsCartOpen(false));
 
   const increaseQuantity = (id: number) => {
     setCart((prevCart) =>
@@ -161,10 +169,11 @@ export default function Cart() {
       <AnimatePresence>
         {isCartOpen && (
           <motion.div
+            ref={cartRef}
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 100 }}
-            className='absolute md:right-0 -right-5 shadow-lg bg-white  min-w-[70vw] md:min-w-[50vw] lg:min-w-[35vw] p-4'
+            className='absolute md:right-0 -right-5 shadow-lg bg-white  w-screen md:w-[50vw] lg:w-[35vw] p-4'
           >
             <div className='flex justify-between mx-2 '>
               <h6 className='font-semibold'>Shopping Cart</h6>
@@ -173,7 +182,7 @@ export default function Cart() {
               </p>
             </div>
             {cart.length !== 0 ? (
-              <motion.ul className='h-[70vh] overflow-auto '>
+              <motion.ul className='h-[60vh] md:h-[70vh] overflow-auto '>
                 {cart.map((shoe) => (
                   <CartItem
                     key={shoe.id}

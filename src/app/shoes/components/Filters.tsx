@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import useMediaQuery from "@/utils/hooks/useMediaQuery";
 import { useFilter } from "@/utils/store/useNav";
+import { useOutsideClick } from "@/utils/hooks/useOutsideClick";
 
 export default function Filters({
   children,
@@ -16,23 +17,7 @@ export default function Filters({
   const { isOpen: isFilterOpen, setIsOpen: setIsFilterOpen } = useFilter();
   const filterRef = useRef<HTMLDivElement>(null);
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        filterRef.current &&
-        !filterRef.current.contains(event.target as Node)
-      ) {
-        setIsFilterOpen(false);
-      }
-    }
-
-    // Attach event listener to document
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      // Cleanup event listener on component unmount
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [setIsFilterOpen]);
+  useOutsideClick(filterRef, () => setIsFilterOpen(false));
 
   return (
     <AnimatePresence>

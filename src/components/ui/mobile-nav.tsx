@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { MenuButton } from "./mobile-menu";
 import { useHideOnScrollDown } from "@/utils/hooks/useHideOnScroll";
 import { navItems } from "../Navigation";
@@ -10,6 +10,7 @@ import { url } from "inspector";
 
 import { usePathname } from "next/navigation";
 import { useMobileNav } from "@/utils/store/useNav";
+import { useOutsideClick } from "@/utils/hooks/useOutsideClick";
 
 const userNav = [
   {
@@ -39,6 +40,8 @@ export default function MobileNav() {
     setIsMobileNavOpen(!isMobileNavOpen);
     setIsDetailsOpen(false);
   };
+  const navRef = useRef<HTMLDivElement>(null);
+  useOutsideClick(navRef, () => setIsMobileNavOpen(false));
   const pathname = usePathname();
   const determineHref = (url: string) => {
     if (pathname === "/shoes") {
@@ -54,6 +57,7 @@ export default function MobileNav() {
       <AnimatePresence>
         {isMobileNavOpen && (
           <motion.div
+            ref={navRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, x: -20 }}
