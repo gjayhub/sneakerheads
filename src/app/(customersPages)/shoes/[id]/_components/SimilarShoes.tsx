@@ -1,7 +1,7 @@
 import ProductCard from "@/components/ui/product-card";
 import { shoes } from "@/utils/data";
 import { ShoeTypes } from "@/utils/types/shoeTypes";
-import Link from "next/link";
+
 import React from "react";
 
 export default function SimilarShoes({ brand }: { brand: string | undefined }) {

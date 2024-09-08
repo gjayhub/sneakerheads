@@ -1,5 +1,5 @@
 "use client";
-import Dropdown from "@/components/ui/dropdown";
+import Dropdown from "@/components/ui/custom-dropdown";
 import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
 

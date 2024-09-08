@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import React from "react";
-import FavoritesList from "./components/FavoritesList";
+import FavoritesList from "./_components/FavoritesList";
 
 export default function FavoritesPage() {
   return (

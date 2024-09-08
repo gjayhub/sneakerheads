@@ -1,14 +1,14 @@
 import { Separator } from "@/components/ui/separator";
 import React, { Suspense } from "react";
-import BreadCrumbs from "./components/BreadCrumbs";
-import TotalShoes from "./components/TotalShoes";
-import SortDropdown from "./components/SortDropdown";
-import FilterToggle from "./components/FilterToggle";
-import Filters from "./components/Filters";
-import Brands from "./components/Brands";
-import Sizes from "./components/Sizes";
-import PriceRange from "./components/PriceRange";
-import ProductList from "./components/ProductList";
+import BreadCrumbs from "./_components/BreadCrumbs";
+import TotalShoes from "./_components/TotalShoes";
+import SortDropdown from "./_components/SortDropdown";
+import FilterToggle from "./_components/FilterToggle";
+import Filters from "./_components/Filters";
+import Brands from "./_components/Brands";
+import Sizes from "./_components/Sizes";
+import PriceRange from "./_components/PriceRange";
+import ProductList from "./_components/ProductList";
 import ProductSkeleton from "@/components/skeleton/ProductSkeleton";
 
 export default function Shoes({

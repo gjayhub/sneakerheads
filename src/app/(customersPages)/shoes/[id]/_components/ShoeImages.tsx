@@ -1,8 +1,6 @@
 "use client";
-import AddToFavorite from "@/components/ui/add-to-favorite";
-import { Heart } from "lucide-react";
+
 import Image from "next/image";
-import Link from "next/link";
 
 import React, { ReactNode, useState } from "react";
 

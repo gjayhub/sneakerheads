@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Poppins, League_Gothic } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
-import Navigation from "@/components/Navigation";
 import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,7 +30,6 @@ export default function RootLayout({
       <body
         className={`  ${poppins_init.variable} ${leage_gothic_init.variable} font-poppins`}
       >
-        <Navigation />
         {children}
         <Footer />
         <Toaster />

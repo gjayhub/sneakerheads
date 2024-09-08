@@ -1,12 +1,12 @@
 import { getShoeById } from "@/utils/actions/getShoesById";
 import React, { Suspense } from "react";
-import ShoeImages from "./components/ShoeImages";
-import Sizes from "../components/Sizes";
+import Sizes from "../_components/Sizes";
 import Button from "@/components/ui/button";
-import SimilarShoes from "./components/SimilarShoes";
 import AddToCart from "@/components/ui/add-to-cart";
 import AddToFavorite from "@/components/ui/add-to-favorite";
 import Link from "next/link";
+import ShoeImages from "./_components/ShoeImages";
+import SimilarShoes from "./_components/SimilarShoes";
 
 export default async function ShoeDetails({
   params,

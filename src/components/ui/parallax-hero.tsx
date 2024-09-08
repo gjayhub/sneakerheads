@@ -1,11 +1,7 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import {
-  Parallax,
-  ParallaxBannerLayer,
-  ParallaxProvider,
-} from "react-scroll-parallax";
+
 import Button from "./button";
 
 export default function ParallaxHero() {

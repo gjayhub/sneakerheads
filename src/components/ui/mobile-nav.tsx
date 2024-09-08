@@ -5,12 +5,11 @@ import { navItems } from "../Navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { Heart, ShoppingBag, User } from "lucide-react";
-import Dropdown from "./dropdown";
-import { url } from "inspector";
 
 import { usePathname } from "next/navigation";
 import { useMobileNav } from "@/utils/store/useNav";
 import { useOutsideClick } from "@/utils/hooks/useOutsideClick";
+import Dropdown from "./custom-dropdown";
 
 const userNav = [
   {
