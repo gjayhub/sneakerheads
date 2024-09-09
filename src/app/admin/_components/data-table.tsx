@@ -10,8 +10,17 @@ import {
   getSortedRowModel,
   ColumnFiltersState,
   getFilteredRowModel,
+  FilterFn,
+  SortingFn,
+  sortingFns,
+  Column,
 } from "@tanstack/react-table";
 import { Input } from "@/components/ui/input";
+import {
+  RankingInfo,
+  rankItem,
+  compareItems,
+} from "@tanstack/match-sorter-utils";
 
 import {
   Table,
@@ -21,12 +30,46 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+export type OrderType = {
+  id: string;
+  customer: string;
+  customerId: string;
+  deliveryAddress: string;
+  status: string;
+  pricePaid: number;
+  shoesName: string;
+  quantity: number;
+  shoeId: string;
+};
+
+declare module "@tanstack/react-table" {
+  //add fuzzy filter to the filterFns
+  interface FilterFns {
+    fuzzy: FilterFn<unknown>;
+  }
+  interface FilterMeta {
+    itemRank: RankingInfo;
+  }
+}
 
 interface DataTableProps<ShoeTypes, TValue> {
   columns: ColumnDef<ShoeTypes, TValue>[];
   data: ShoeTypes[];
 }
+const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
+  // Rank the item
+  const itemRank = rankItem(row.getValue(columnId), value);
+
+  // Store the itemRank info
+  addMeta({
+    itemRank,
+  });
+
+  // Return if the item should be filtered in/out
+  return itemRank.passed;
+};
 
 export function DataTable<ShoeTypes, TValue>({
   columns,
@@ -34,10 +77,17 @@ export function DataTable<ShoeTypes, TValue>({
 }: DataTableProps<ShoeTypes, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [globalFilter, setGlobalFilter] = useState("");
   const table = useReactTable({
     data,
     columns,
+    filterFns: {
+      fuzzy: fuzzyFilter, //define as a filter functiomn that can be used in column definitions
+    },
+    globalFilterFn: "fuzzy",
+    onGlobalFilterChange: setGlobalFilter,
     getCoreRowModel: getCoreRowModel(),
+
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
@@ -46,19 +96,25 @@ export function DataTable<ShoeTypes, TValue>({
     state: {
       sorting,
       columnFilters,
+      globalFilter,
     },
   });
+  useEffect(() => {
+    if (table.getState().columnFilters[0]?.id === "name") {
+      if (table.getState().sorting[0]?.id !== "name") {
+        table.setSorting([{ id: "name", desc: false }]);
+      }
+    }
+  }, [table.getState().columnFilters[0]?.id]);
 
   return (
     <div>
       <div className='flex items-center py-4'>
-        <Input
-          placeholder='Search shoes...'
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
-          }
-          className='max-w-sm'
+        <DebouncedInput
+          value={globalFilter ?? ""}
+          onChange={(value) => setGlobalFilter(String(value))}
+          className='p-2 font-lg shadow border border-block'
+          placeholder='Search all columns...'
         />
       </div>
       <div className='my-2'>
@@ -129,5 +185,39 @@ export function DataTable<ShoeTypes, TValue>({
         </button>
       </div>
     </div>
+  );
+}
+
+// A typical debounced input react component
+function DebouncedInput({
+  value: initialValue,
+  onChange,
+  debounce = 500,
+  ...props
+}: {
+  value: string | number;
+  onChange: (value: string | number) => void;
+  debounce?: number;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange">) {
+  const [value, setValue] = useState(initialValue);
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      onChange(value);
+    }, debounce);
+
+    return () => clearTimeout(timeout);
+  }, [value]);
+
+  return (
+    <input
+      {...props}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
   );
 }

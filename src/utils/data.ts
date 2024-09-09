@@ -14,6 +14,7 @@ export const shoes = [
       "/shoes/Vans/Wayvee-Leather/3.webp",
     ],
     id: 1,
+    stock: 1,
   },
   {
     name: "Chukka Push",
@@ -30,6 +31,7 @@ export const shoes = [
       "/shoes/Vans/Chukka-Push/3.webp",
     ],
     id: 2,
+    stock: 1,
   },
   {
     name: "Knu Skool",
@@ -45,6 +47,7 @@ export const shoes = [
       "/shoes/Vans/Knu-Skool/3.webp",
     ],
     id: 3,
+    stock: 2,
   },
   {
     name: "Sport Low",
@@ -61,6 +64,7 @@ export const shoes = [
       "/shoes/Vans/Sport-Low/3.webp",
     ],
     id: 4,
+    stock: 1,
   },
   {
     name: "Authentic",
@@ -77,6 +81,7 @@ export const shoes = [
       "/shoes/Vans/Authentic/3.webp",
     ],
     id: 5,
+    stock: 1,
   },
   {
     name: "Old Skool Primary Check",
@@ -93,6 +98,7 @@ export const shoes = [
       "/shoes/Vans/Old-Skool-Primary-Check/3.webp",
     ],
     id: 6,
+    stock: 1,
   },
   {
     name: "Lowland ComfyCush Leather",
@@ -109,6 +115,7 @@ export const shoes = [
       "/shoes/Vans/Lowland-ComfyCush-Leather/3.webp",
     ],
     id: 7,
+    stock: 2,
   },
   {
     name: "Classic Slip-On",
@@ -124,6 +131,7 @@ export const shoes = [
       "/shoes/Vans/Classic-Slip-On/3.webp",
     ],
     id: 8,
+    stock: 2,
   },
   {
     name: "Classic Slip-On Checkerboard",
@@ -139,6 +147,7 @@ export const shoes = [
       "/shoes/Vans/Classic-Slip-On-Checkerboard/3.webp",
     ],
     id: 9,
+    stock: 2,
   },
   {
     name: "Old School",
@@ -155,6 +164,7 @@ export const shoes = [
       "/shoes/Vans/Old-School/3.webp",
     ],
     id: 10,
+    stock: 2,
   },
   {
     name: "Gazelle",
@@ -172,6 +182,7 @@ export const shoes = [
       "/shoes/Adidas/Gazelle/4.jpg",
     ],
     id: 11,
+    stock: 2,
   },
   {
     name: "4DFWD 4",
@@ -189,6 +200,7 @@ export const shoes = [
       "/shoes/Adidas/4DFWD-4/4.jpg",
     ],
     id: 12,
+    stock: 3,
   },
   {
     name: "Own the Game 3",
@@ -206,6 +218,7 @@ export const shoes = [
       "/shoes/Adidas/Own-the-Game-3/4.jpg",
     ],
     id: 13,
+    stock: 3,
   },
   {
     name: "SL 72 RS",
@@ -223,6 +236,7 @@ export const shoes = [
       "/shoes/Adidas/SL-72-RS/4.jpg",
     ],
     id: 14,
+    stock: 3,
   },
   {
     name: "Stan Smith",
@@ -240,6 +254,7 @@ export const shoes = [
       "/shoes/Adidas/Stan-Smith/4.jpg",
     ],
     id: 15,
+    stock: 3,
   },
   {
     name: "Samba OG",
@@ -257,6 +272,7 @@ export const shoes = [
       "/shoes/Adidas/Samba-OG/4.jpg",
     ],
     id: 16,
+    stock: 3,
   },
   {
     name: "Converse x Wonka Chuck 70",
@@ -274,6 +290,7 @@ export const shoes = [
       "/shoes/Converse/Converse-x-Wonka-Chuck-70/4.jpg",
     ],
     id: 17,
+    stock: 3,
   },
   {
     name: "Weapon",
@@ -291,6 +308,7 @@ export const shoes = [
       "/shoes/Converse/Weapon/4.jpg",
     ],
     id: 18,
+    stock: 3,
   },
   {
     name: "Chuck Taylor All Star Cruise",
@@ -308,6 +326,7 @@ export const shoes = [
       "/shoes/Converse/Chuck-Taylor-All-Star-Cruise/4.jpg",
     ],
     id: 19,
+    stock: 3,
   },
   {
     name: "Converse x Dungeons and Dragons Chuck 70",
@@ -325,6 +344,7 @@ export const shoes = [
       "/shoes/Converse/Converse-x-Dungeons-and-Dragons-Chuck-70/4.jpg",
     ],
     id: 20,
+    stock: 3,
   },
   {
     name: "Chuck 70 Monochrome",
@@ -342,6 +362,7 @@ export const shoes = [
       "/shoes/Converse/Chuck-70-Monochrome/4.jpg",
     ],
     id: 21,
+    stock: 3,
   },
   {
     name: "Star Player 76 Premium Canvas",
@@ -359,6 +380,7 @@ export const shoes = [
       "/shoes/Converse/Star-Player-76-Premium-Canvas/4.jpg",
     ],
     id: 22,
+    stock: 3,
   },
   {
     name: "One Star Academy Pro Suede",
@@ -376,6 +398,7 @@ export const shoes = [
       "/shoes/Converse/One-Star-Academy-Pro-Suede/4.jpg",
     ],
     id: 23,
+    stock: 3,
   },
   {
     name: "Star Player 76",
@@ -393,6 +416,7 @@ export const shoes = [
       "/shoes/Converse/Star-Player-76/4.jpg",
     ],
     id: 24,
+    stock: 3,
   },
   {
     name: "Chuck Taylor All Star",
@@ -410,6 +434,7 @@ export const shoes = [
       "/shoes/Converse/Chuck-Taylor-All-Star/4.jpg",
     ],
     id: 25,
+    stock: 3,
   },
   {
     name: "Chuck 70",
@@ -427,6 +452,7 @@ export const shoes = [
       "/shoes/Converse/Chuck-70/4.jpg",
     ],
     id: 26,
+    stock: 2,
   },
   {
     name: "Jordan Stadium 90",
@@ -444,6 +470,7 @@ export const shoes = [
       "/shoes/Nike/Jordan-Stadium-90/4.png",
     ],
     id: 27,
+    stock: 2,
   },
   {
     name: "LeBron NXXT Gen AMPD EP",
@@ -461,6 +488,7 @@ export const shoes = [
       "/shoes/Nike/LeBron-NXXT-Gen-AMPD-EP/4.png",
     ],
     id: 28,
+    stock: 2,
   },
   {
     name: "JA 1EP",
@@ -478,6 +506,7 @@ export const shoes = [
       "/shoes/Nike/JA-1EP/4.jpg",
     ],
     id: 29,
+    stock: 2,
   },
   {
     name: "Sabrina",
@@ -495,6 +524,7 @@ export const shoes = [
       "/shoes/Nike/Sabrina/4.jpg",
     ],
     id: 30,
+    stock: 2,
   },
   {
     name: "Nike Precision 7",
@@ -512,6 +542,7 @@ export const shoes = [
       "/shoes/Nike/Nike-Precision-7/4.jpg",
     ],
     id: 31,
+    stock: 2,
   },
   {
     name: "Air Jordan 1 Mid SE",
@@ -529,6 +560,7 @@ export const shoes = [
       "/shoes/Nike/Air-Jordan-1-Mid-SE/4.png",
     ],
     id: 32,
+    stock: 2,
   },
   {
     name: "Nike SB Dunk Low Pro",
@@ -546,6 +578,7 @@ export const shoes = [
       "/shoes/Nike/Nike-SB-Dunk-Low-Pro/4.png",
     ],
     id: 33,
+    stock: 2,
   },
   {
     name: "Nike Pegasus 41 Electric",
@@ -563,6 +596,7 @@ export const shoes = [
       "/shoes/Nike/Nike-Pegasus-41-Electric/4.png",
     ],
     id: 34,
+    stock: 2,
   },
   {
     name: "Nike Air Force 1 '07 LV8",
@@ -580,6 +614,7 @@ export const shoes = [
       "/shoes/Nike/Nike-Air-Force-1-07-LV8/4.png",
     ],
     id: 35,
+    stock: 2,
   },
   {
     name: "Air Jordan 4 Retro SE 'Wet Cement'",
@@ -597,6 +632,7 @@ export const shoes = [
       "/shoes/Nike/Air-Jordan-4-Retro-SE-Wet-Cement/4.png",
     ],
     id: 36,
+    stock: 2,
   },
 ];
 

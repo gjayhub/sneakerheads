@@ -1,6 +1,6 @@
 import { shoes } from "@/utils/data";
 import { columns } from "./columns";
-import { DataTable } from "./data-table";
+import { DataTable } from "../_components/data-table";
 import { ShoeTypes } from "@/utils/types/shoeTypes";
 
 async function getData(): Promise<ShoeTypes[]> {

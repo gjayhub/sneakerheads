@@ -19,39 +19,46 @@ model Shoe {
   name          String
   price         Float
   description   String
-  availableSizes String[] // Storing the available sizes as an array of strings
+  availableSizes String[] 
   brand         String
- 
-  images        String[]   // Images will be handled in a separate model
-  order          Order[]
+  images        String[]  
+  orders         OrderItem[] //change this 
   sale          Int
-
-  createdAt     DateTime  @default(now()) // For filtering by new items
+  stock         Int //change this 
+  createdAt     DateTime  @default(now()) 
   updatedAt     DateTime  @updatedAt
 }
-
 
 
 model Order {
-  id  String   @id @default(auto())  @map("_id") @db.ObjectId
-
-  pricePaid Int
+  id             String   @id @default(auto())  @map("_id") @db.ObjectId
+  pricePaid      Int
   deliveryAddress String
-  updatedAt     DateTime  @updatedAt
-  createdAt     DateTime  @default(now()) 
-  shoeId String   @db.ObjectId  
-  userId String  @db.ObjectId 
-  shoes Shoe  @relation(fields: [shoeId], references: [id], onDelete: Restrict)
-  orders  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-
+  updatedAt      DateTime  @updatedAt
+  createdAt      DateTime  @default(now()) 
+  userId         String    @db.ObjectId 
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orderItems     OrderItem[] //change this 
 }
+
+//added this new model
+model OrderItem {
+  id        String   @id @default(auto())  @map("_id") @db.ObjectId
+  orderId   String   @db.ObjectId
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  shoeId    String   @db.ObjectId
+  shoe      Shoe     @relation(fields: [shoeId], references: [id], onDelete: Restrict)
+  quantity  Int      
+}
+
+//how can i migrate all the changes
 model User {
   id  String   @id @default(auto())  @map("_id") @db.ObjectId
   name String
   address String
   email String
   role String
-  createdAt     DateTime  @default(now()) // For filtering by new items
+  createdAt     DateTime  @default(now()) 
   updatedAt     DateTime  @updatedAt
   orders Order[]
 }

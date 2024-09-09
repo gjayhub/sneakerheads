@@ -7,4 +7,5 @@ export type ShoeTypes = {
   category: string;
   images: string[];
   id: number;
+  stock: number;
 };

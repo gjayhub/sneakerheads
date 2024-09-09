@@ -1,9 +1,14 @@
 "use client";
 
 import { ShoeTypes } from "@/utils/types/shoeTypes";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, SortingFn, sortingFns } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
 import { ArrowUpDown } from "lucide-react";
+import {
+  RankingInfo,
+  rankItem,
+  compareItems,
+} from "@tanstack/match-sorter-utils";
 
 import {
   DropdownMenu,
@@ -18,17 +23,33 @@ import Button from "@/components/ui/button";
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 
-export const columns: ColumnDef<ShoeTypes>[] = [
+const fuzzySort: SortingFn<any> = (rowA, rowB, columnId) => {
+  let dir = 0;
+
+  // Only sort by rank if the column has ranking information
+  if (rowA.columnFiltersMeta[columnId]) {
+    dir = compareItems(
+      rowA.columnFiltersMeta[columnId]?.itemRank!,
+      rowB.columnFiltersMeta[columnId]?.itemRank!
+    );
+  }
+
+  // Provide an alphanumeric fallback for when the item ranks are equal
+  return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir;
+};
+
+export const columns: ColumnDef<ShoeTypes, any>[] = [
   {
     accessorKey: "id",
-    header: "Id",
+    header: () => <h6 className='text-base font-semibold'>Id</h6>,
+    filterFn: "includesString",
   },
   {
     accessorKey: "name",
     header: ({ column }) => {
       return (
         <button
-          className='flex items-center'
+          className='flex items-center font-semibold'
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Name
@@ -36,17 +57,32 @@ export const columns: ColumnDef<ShoeTypes>[] = [
         </button>
       );
     },
+    filterFn: "fuzzy", //using our custom fuzzy filter function
+    // filterFn: fuzzyFilter, //or just define with the function
+    sortingFn: fuzzySort,
   },
   {
     accessorKey: "brand",
-    header: "Brand",
+    header: () => <h6 className='text-base font-semibold'>Brand</h6>,
+    filterFn: "includesStringSensitive",
+  },
+  {
+    accessorKey: "stock",
+    header: () => (
+      <h6 className='text-center text-base font-semibold'>Stock</h6>
+    ),
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue("stock"));
+
+      return <div className='text-center font-medium'>{amount}</div>;
+    },
   },
   {
     accessorKey: "price",
     header: ({ column }) => {
       return (
         <button
-          className='flex items-center w-full justify-end text-right'
+          className='flex items-center w-full justify-end text-right font-semibold'
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Price
